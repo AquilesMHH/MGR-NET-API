@@ -1,0 +1,11 @@
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Common\bin\Debug\MGR-Common.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Common\bin\Debug\MGR-Common.pdb
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Common\obj\Debug\MGR-Common.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Common\obj\Debug\MGR-Common.pdb
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Common\bin\Debug\Newtonsoft.Json.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Common\bin\Debug\Oracle.ManagedDataAccess.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Common\bin\Debug\Oracle.ManagedDataAccess.EntityFramework.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Common\bin\Debug\EntityFramework.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Common\bin\Debug\Newtonsoft.Json.xml
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Common\bin\Debug\EntityFramework.xml
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Common\obj\Debug\MGR-Common.csprojResolveAssemblyReference.cache

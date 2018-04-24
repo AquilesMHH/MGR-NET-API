@@ -1,0 +1,14 @@
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\bin\Debug\MGR-Model.dll.config
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\bin\Debug\MGR-Model.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\bin\Debug\MGR-Model.pdb
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\bin\Debug\EntityFramework.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\bin\Debug\MGR-Entidades.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\bin\Debug\Oracle.ManagedDataAccess.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\bin\Debug\Oracle.ManagedDataAccess.EntityFramework.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\bin\Debug\MGR-Entidades.pdb
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\bin\Debug\EntityFramework.xml
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\obj\Debug\MGR-Model.csprojResolveAssemblyReference.cache
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\obj\Debug\MGR-Model.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Model\obj\Debug\MGR-Model.pdb

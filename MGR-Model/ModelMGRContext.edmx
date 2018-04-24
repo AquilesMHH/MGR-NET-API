@@ -1,0 +1,1297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GRTA_DECLARACIONES_PERFIL">
+          <Key>
+            <PropertyRef Name="ID_PERFIL" />
+          </Key>
+          <Property Name="ID_PERFIL" Type="number" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="number" Precision="2" Scale="0" />
+          <Property Name="IDENTIFICADOR_DECLARACION" Type="varchar2" MaxLength="75" />
+          <Property Name="TIPO_REQUERIMIENTO" Type="number" Precision="6" Scale="0" />
+          <Property Name="TIPO_MOMENTO" Type="number" Precision="6" Scale="0" />
+          <Property Name="INDICADOR_ACTIVO" Type="number" Precision="1" Scale="0" />
+          <Property Name="SELECCION_CASOS" Type="number" Precision="7" Scale="0" />
+          <Property Name="FECHA_INICIO" Type="timestamp" Precision="6" />
+          <Property Name="FECHA_TERMINO" Type="timestamp" Precision="6" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="INDICADOR_SELECCION" Type="number" Precision="1" Scale="0" />
+          <Property Name="FECHA_DECLARACION" Type="date" />
+          <Property Name="CLASE_MEDIDA" Type="number" Precision="6" Scale="0" />
+          <Property Name="FECHA_REGISTRO_IDX" Type="date" />
+          <Property Name="TOTAL_LINEAS" Type="number" Precision="10" Scale="0" />
+          <Property Name="PERFIL_RIESGO" Type="number" Precision="20" Scale="8" />
+          <Property Name="GRADO_RIESGO" Type="number" Precision="6" Scale="0" />
+          <Property Name="TIPO_MOTIVO" Type="number" Precision="6" Scale="0" />
+          <Property Name="DESCRIPCION_MOTIVO" Type="varchar2" MaxLength="150" />
+          <Property Name="FECHA_MOTIVO" Type="date" />
+          <Property Name="SESSION_MOTIVO" Type="number" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="GRTA_EVALUACION">
+          <Key>
+            <PropertyRef Name="ID_EVALUACION" />
+          </Key>
+          <Property Name="ID_EVALUACION" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="number" Precision="2" Scale="0" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="4000" />
+          <Property Name="ESTADO_EVALUACION" Type="number" Precision="6" Scale="0" />
+          <Property Name="FECHA_INICIO_ANALISIS" Type="date" />
+          <Property Name="FECHA_FIN_ANALISIS" Type="date" />
+          <Property Name="TOTAL_DOCUMENTOS" Type="number" Precision="6" Scale="0" />
+          <Property Name="CLASE_MEDIDA" Type="number" Precision="6" Scale="0" />
+        </EntityType>
+        <EntityType Name="GRTA_FUNCION_SUJETO">
+          <Key>
+            <PropertyRef Name="SUJETO_RIESGO" />
+            <PropertyRef Name="TIPO_MEDIDA" />
+          </Key>
+          <Property Name="SUJETO_RIESGO" Type="number" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="TIPO_MEDIDA" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="TIPO_FUNCION" Type="number" Precision="6" Scale="0" />
+          <Property Name="FUNCION_ANALISIS" Type="varchar2" MaxLength="75" />
+          <Property Name="FUNCION_PRODUCCION" Type="varchar2" MaxLength="75" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="4000" />
+          <Property Name="FECHA_INICIO_VIGENCIA" Type="date" />
+          <Property Name="FECHA_FIN_VIGENCIA" Type="date" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="SESSION_REGISTRO" Type="number" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="GRTA_MEDIDAS">
+          <Key>
+            <PropertyRef Name="ID_MEDIDA" />
+            <PropertyRef Name="VERSION_MEDIDA" />
+          </Key>
+          <Property Name="ID_MEDIDA" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="VERSION_MEDIDA" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="number" Precision="2" Scale="0" />
+          <Property Name="TIPO_MEDIDA" Type="number" Precision="6" Scale="0" />
+          <Property Name="CLASE_MEDIDA" Type="number" Precision="6" Scale="0" />
+          <Property Name="ID_POLITICA" Type="number" Precision="4" Scale="0" />
+          <Property Name="ESTADO_MEDIDA" Type="number" Precision="6" Scale="0" />
+          <Property Name="JERARQUIA_MEDIDA" Type="number" Precision="6" Scale="0" />
+          <Property Name="NOMBRE_MEDIDA" Type="varchar2" MaxLength="200" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="4000" />
+          <Property Name="FECHA_INICIO_VIGENCIA" Type="date" />
+          <Property Name="FECHA_FIN_VIGENCIA" Type="date" />
+          <Property Name="FECHA_INICIO_ANALISIS" Type="date" />
+          <Property Name="FECHA_FIN_ANALISIS" Type="date" />
+          <Property Name="VALOR_FRECUENCIA" Type="number" Precision="3" Scale="0" />
+          <Property Name="TIPO_FRECUENCIA" Type="number" Precision="6" Scale="0" />
+          <Property Name="RITMO_APRENDIZAJE" Type="number" Precision="2" Scale="0" />
+          <Property Name="TERMINO_MOMENTO" Type="number" Precision="3" Scale="2" />
+          <Property Name="MEDIDA_PRECEDENTE" Type="number" Precision="8" Scale="0" />
+          <Property Name="VERSION_PRECEDENTE" Type="number" Precision="3" Scale="0" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="SESSION_REGISTRO" Type="number" Precision="10" Scale="0" />
+          <Property Name="FUNCION_ACTIVACION" Type="number" Precision="6" Scale="0" />
+          <Property Name="FLAG_REPLICACION" Type="number" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="GRTA_MENSAJES_SUJETO">
+          <Key>
+            <PropertyRef Name="ID_MENSAJE_SUJETO" />
+          </Key>
+          <Property Name="ID_MENSAJE_SUJETO" Type="number" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="number" Precision="2" Scale="0" />
+          <Property Name="ID_PERFIL" Type="number" Precision="12" Scale="0" />
+          <Property Name="ID_MEDIDA" Type="number" Precision="8" Scale="0" />
+          <Property Name="VERSION_MEDIDA" Type="number" Precision="3" Scale="0" />
+          <Property Name="CONDICION_MEDIDAS" Type="number" Precision="8" Scale="0" />
+          <Property Name="IDENTIFICADOR_DECLARACION" Type="varchar2" MaxLength="75" />
+          <Property Name="INDICADOR_PROCESO" Type="varchar2" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="GRTA_PARAMETROS">
+          <Key>
+            <PropertyRef Name="ID_PARAMETRO" />
+          </Key>
+          <Property Name="ID_PARAMETRO" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="number" Precision="2" Scale="0" />
+          <Property Name="CLASE_PARAMETRO" Type="number" Precision="6" Scale="0" />
+          <Property Name="VALOR_SUMINISTRADO" Type="varchar2" MaxLength="75" />
+          <Property Name="VALOR_CODIGO_VARIABLE" Type="number" Precision="4" Scale="0" />
+          <Property Name="VALOR_IDENTIFICACION_SUJETO" Type="number" Precision="4" Scale="0" />
+          <Property Name="DESCRIPCION_BREVE" Type="varchar2" MaxLength="35" />
+          <Property Name="TIPO_DATO" Type="number" Precision="6" Scale="0" />
+          <Property Name="FECHA_INICIO_VIGENCIA" Type="date" />
+          <Property Name="FECHA_FIN_VIGENCIA" Type="date" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="SESSION_REGISTRO" Type="number" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="GRTA_SESSION">
+          <Key>
+            <PropertyRef Name="ID_SESSION" />
+          </Key>
+          <Property Name="ID_SESSION" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CODIGO_USUARIO" Type="varchar2" MaxLength="35" />
+          <Property Name="DIRECCION_IP" Type="varchar2" MaxLength="15" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="TOKEN" Type="varchar2" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="GRTA_USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="USUARIO" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="CLAVE" Type="varchar2" MaxLength="500" Nullable="false" />
+          <Property Name="PRIMER_NOMBRE" Type="varchar2" MaxLength="250" Nullable="false" />
+          <Property Name="SEGUNDO_NOMBRE" Type="varchar2" MaxLength="250" />
+          <Property Name="PRIMER_APELLIDO" Type="varchar2" MaxLength="250" Nullable="false" />
+          <Property Name="SEGUNDO_APELLIDO" Type="varchar2" MaxLength="250" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="75" />
+          <Property Name="FOTO" Type="blob" />
+          <Property Name="USUARIO_ADMINISTRADOR" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="VIGENCIA_CLAVE" Type="date" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="FECHA_ELIMINACION" Type="date" />
+          <Property Name="FECHA_MODIFICACION" Type="date" />
+        </EntityType>
+        <EntityType Name="GRTA_USUARIO_FUNC_OPERACION">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_FUNCIONALIDAD" />
+            <PropertyRef Name="ID_OPERACION" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ID_FUNCIONALIDAD" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ID_OPERACION" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="FECHA_ELIMINACION" Type="date" />
+          <Property Name="FECHA_MODIFICACION" Type="date" />
+        </EntityType>
+        <EntityType Name="GRTA_USUARIO_FUNCIONALIDAD">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_FUNCIONALIDAD" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ID_FUNCIONALIDAD" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="FECHA_ELIMINACION" Type="date" />
+          <Property Name="FECHA_MODIFICACION" Type="date" />
+        </EntityType>
+        <EntityType Name="GRTA_USUARIO_PROPIEDAD">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_PROPIEDAD" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ID_PROPIEDAD" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="VALOR" Type="varchar2" MaxLength="250" Nullable="false" />
+          <Property Name="ESTADO" Type="number" Precision="6" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MGR_DESA_R5_V1.GRTA_USUARIO_ROL' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="GRTA_USUARIO_ROL">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_ROL" />
+            <PropertyRef Name="ESTADO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ID_ROL" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="COMENTARIO" Type="varchar2" MaxLength="500" />
+          <Property Name="ESTADO" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="FECHA_ELIMINACION" Type="date" />
+          <Property Name="FECHA_MODIFICACION" Type="date" />
+        </EntityType>
+        <EntityType Name="GRTA_VARIABLES">
+          <Key>
+            <PropertyRef Name="CODIGO_VARIABLE" />
+          </Key>
+          <Property Name="CODIGO_VARIABLE" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="number" Precision="2" Scale="0" />
+          <Property Name="DESCRIPCION_BREVE" Type="varchar2" MaxLength="75" />
+          <Property Name="DESCRIPCION_COMPLETA" Type="varchar2" MaxLength="300" />
+          <Property Name="TIPO_VARIABLE" Type="number" Precision="6" Scale="0" />
+          <Property Name="TABLA_TRANSACCIONAL" Type="number" Precision="6" Scale="0" />
+          <Property Name="EXPRESION_TRANSACCIONAL" Type="varchar2" MaxLength="500" />
+          <Property Name="TABLA_CONSOLIDACION" Type="number" Precision="6" Scale="0" />
+          <Property Name="EXPRESION_CONSOLIDACION" Type="varchar2" MaxLength="500" />
+          <Property Name="TIPO_DATO" Type="number" Precision="6" Scale="0" />
+          <Property Name="MODO_USO" Type="number" Precision="6" Scale="0" />
+          <Property Name="NUMERO_OCURRENCIAS" Type="number" Precision="6" Scale="0" />
+          <Property Name="MODO_OBTENCION" Type="number" Precision="6" Scale="0" />
+          <Property Name="INDICADOR_PRESENCIA" Type="number" Precision="6" Scale="0" />
+          <Property Name="TABLA_CODIFICACION" Type="number" Precision="4" Scale="0" />
+          <Property Name="FECHA_FIN_VIGENCIA" Type="date" />
+          <Property Name="FECHA_INICIO_VIGENCIA" Type="date" />
+          <Property Name="QUERY_AUTOGENERADO" Type="varchar2" MaxLength="4000" />
+          <Property Name="VARIABLE_CATALOGO" Type="number" Precision="4" Scale="0" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="SESSION_REGISTRO" Type="number" Precision="10" Scale="0" />
+          <Property Name="CLASIFICACION_DATA" Type="number" Precision="6" Scale="0" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MGR_DESA_R5_V1.VW_COMPENDIO_SUJETO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_COMPENDIO_SUJETO">
+          <Key>
+            <PropertyRef Name="COD_" />
+            <PropertyRef Name="TABLAS_SUJETO" />
+          </Key>
+          <Property Name="COD_" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_SUJETO" Type="varchar2" MaxLength="75" />
+          <Property Name="TABLA_" Type="varchar2" MaxLength="653" />
+          <Property Name="ORIG_FUENTE" Type="varchar2" MaxLength="500" />
+          <Property Name="TIP_TABLA" Type="varchar2" MaxLength="75" />
+          <Property Name="FECHAS" Type="varchar2" MaxLength="19" />
+          <Property Name="TABLAS_SUJETO" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="number" Precision="2" Scale="0" />
+          <Property Name="NOMBRE_TABLA" Type="varchar2" MaxLength="500" />
+          <Property Name="CODIGO_ALTERNO" Type="varchar2" MaxLength="150" />
+          <Property Name="ORIGEN_FUENTE" Type="number" Precision="6" Scale="0" />
+          <Property Name="TIPO_TABLA" Type="number" Precision="6" Scale="0" />
+          <Property Name="FECHA_INICIO_VIGENCIA" Type="date" />
+          <Property Name="FECHA_FIN_VIGENCIA" Type="date" />
+          <Property Name="DESCRIPCION_BREVE" Type="varchar2" MaxLength="75" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="500" />
+          <Property Name="ID_PARAMETRO" Type="number" Precision="4" Scale="0" />
+        </EntityType>
+        <Association Name="SYS_C0010224">
+          <End Role="GRTA_SESSION" Type="Self.GRTA_SESSION" Multiplicity="0..1" />
+          <End Role="GRTA_DECLARACIONES_PERFIL" Type="Self.GRTA_DECLARACIONES_PERFIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_SESSION">
+              <PropertyRef Name="ID_SESSION" />
+            </Principal>
+            <Dependent Role="GRTA_DECLARACIONES_PERFIL">
+              <PropertyRef Name="SESSION_MOTIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010335">
+          <End Role="GRTA_SESSION" Type="Self.GRTA_SESSION" Multiplicity="0..1" />
+          <End Role="GRTA_FUNCION_SUJETO" Type="Self.GRTA_FUNCION_SUJETO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_SESSION">
+              <PropertyRef Name="ID_SESSION" />
+            </Principal>
+            <Dependent Role="GRTA_FUNCION_SUJETO">
+              <PropertyRef Name="SESSION_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010357">
+          <End Role="GRTA_MEDIDAS" Type="Self.GRTA_MEDIDAS" Multiplicity="1" />
+          <End Role="GRTA_MEDIDAS1" Type="Self.GRTA_MEDIDAS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_MEDIDAS">
+              <PropertyRef Name="ID_MEDIDA" />
+              <PropertyRef Name="VERSION_MEDIDA" />
+            </Principal>
+            <Dependent Role="GRTA_MEDIDAS1">
+              <PropertyRef Name="ID_MEDIDA" />
+              <PropertyRef Name="VERSION_MEDIDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010359">
+          <End Role="GRTA_SESSION" Type="Self.GRTA_SESSION" Multiplicity="0..1" />
+          <End Role="GRTA_MEDIDAS" Type="Self.GRTA_MEDIDAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_SESSION">
+              <PropertyRef Name="ID_SESSION" />
+            </Principal>
+            <Dependent Role="GRTA_MEDIDAS">
+              <PropertyRef Name="SESSION_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010366">
+          <End Role="GRTA_DECLARACIONES_PERFIL" Type="Self.GRTA_DECLARACIONES_PERFIL" Multiplicity="0..1" />
+          <End Role="GRTA_MENSAJES_SUJETO" Type="Self.GRTA_MENSAJES_SUJETO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_DECLARACIONES_PERFIL">
+              <PropertyRef Name="ID_PERFIL" />
+            </Principal>
+            <Dependent Role="GRTA_MENSAJES_SUJETO">
+              <PropertyRef Name="ID_PERFIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010367">
+          <End Role="GRTA_MEDIDAS" Type="Self.GRTA_MEDIDAS" Multiplicity="0..1" />
+          <End Role="GRTA_MENSAJES_SUJETO" Type="Self.GRTA_MENSAJES_SUJETO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_MEDIDAS">
+              <PropertyRef Name="ID_MEDIDA" />
+              <PropertyRef Name="VERSION_MEDIDA" />
+            </Principal>
+            <Dependent Role="GRTA_MENSAJES_SUJETO">
+              <PropertyRef Name="ID_MEDIDA" />
+              <PropertyRef Name="VERSION_MEDIDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010387">
+          <End Role="GRTA_SESSION" Type="Self.GRTA_SESSION" Multiplicity="0..1" />
+          <End Role="GRTA_PARAMETROS" Type="Self.GRTA_PARAMETROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_SESSION">
+              <PropertyRef Name="ID_SESSION" />
+            </Principal>
+            <Dependent Role="GRTA_PARAMETROS">
+              <PropertyRef Name="SESSION_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010436">
+          <End Role="GRTA_SESSION" Type="Self.GRTA_SESSION" Multiplicity="0..1" />
+          <End Role="GRTA_VARIABLES" Type="Self.GRTA_VARIABLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_SESSION">
+              <PropertyRef Name="ID_SESSION" />
+            </Principal>
+            <Dependent Role="GRTA_VARIABLES">
+              <PropertyRef Name="SESSION_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010438">
+          <End Role="GRTA_VARIABLES" Type="Self.GRTA_VARIABLES" Multiplicity="1" />
+          <End Role="GRTA_VARIABLES1" Type="Self.GRTA_VARIABLES" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_VARIABLES">
+              <PropertyRef Name="CODIGO_VARIABLE" />
+            </Principal>
+            <Dependent Role="GRTA_VARIABLES1">
+              <PropertyRef Name="CODIGO_VARIABLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010449">
+          <End Role="GRTA_USUARIO" Type="Self.GRTA_USUARIO" Multiplicity="1" />
+          <End Role="GRTA_USUARIO_PROPIEDAD" Type="Self.GRTA_USUARIO_PROPIEDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="GRTA_USUARIO_PROPIEDAD">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010450">
+          <End Role="GRTA_USUARIO" Type="Self.GRTA_USUARIO" Multiplicity="1" />
+          <End Role="GRTA_USUARIO_ROL" Type="Self.GRTA_USUARIO_ROL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="GRTA_USUARIO_ROL">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010459">
+          <End Role="GRTA_USUARIO" Type="Self.GRTA_USUARIO" Multiplicity="1" />
+          <End Role="GRTA_USUARIO_FUNCIONALIDAD" Type="Self.GRTA_USUARIO_FUNCIONALIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="GRTA_USUARIO_FUNCIONALIDAD">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010461">
+          <End Role="GRTA_USUARIO" Type="Self.GRTA_USUARIO" Multiplicity="1" />
+          <End Role="GRTA_USUARIO_FUNC_OPERACION" Type="Self.GRTA_USUARIO_FUNC_OPERACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="GRTA_USUARIO_FUNC_OPERACION">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="GRTA_DECLARACIONES_PERFIL" EntityType="Self.GRTA_DECLARACIONES_PERFIL" Schema="MGR_DESA_R5_V1" store:Type="Tables" />
+          <EntitySet Name="GRTA_EVALUACION" EntityType="Self.GRTA_EVALUACION" Schema="MGR_DESA_R5_V1" store:Type="Tables" />
+          <EntitySet Name="GRTA_FUNCION_SUJETO" EntityType="Self.GRTA_FUNCION_SUJETO" Schema="MGR_DESA_R5_V1" store:Type="Tables" />
+          <EntitySet Name="GRTA_MEDIDAS" EntityType="Self.GRTA_MEDIDAS" Schema="MGR_DESA_R5_V1" store:Type="Tables" />
+          <EntitySet Name="GRTA_MENSAJES_SUJETO" EntityType="Self.GRTA_MENSAJES_SUJETO" Schema="MGR_DESA_R5_V1" store:Type="Tables" />
+          <EntitySet Name="GRTA_PARAMETROS" EntityType="Self.GRTA_PARAMETROS" Schema="MGR_DESA_R5_V1" store:Type="Tables" />
+          <EntitySet Name="GRTA_SESSION" EntityType="Self.GRTA_SESSION" Schema="MGR_DESA_R5_V1" store:Type="Tables" />
+          <EntitySet Name="GRTA_USUARIO" EntityType="Self.GRTA_USUARIO" Schema="MGR_DESA_R5_V1" store:Type="Tables" />
+          <EntitySet Name="GRTA_USUARIO_FUNC_OPERACION" EntityType="Self.GRTA_USUARIO_FUNC_OPERACION" Schema="MGR_DESA_R5_V1" store:Type="Tables" />
+          <EntitySet Name="GRTA_USUARIO_FUNCIONALIDAD" EntityType="Self.GRTA_USUARIO_FUNCIONALIDAD" Schema="MGR_DESA_R5_V1" store:Type="Tables" />
+          <EntitySet Name="GRTA_USUARIO_PROPIEDAD" EntityType="Self.GRTA_USUARIO_PROPIEDAD" Schema="MGR_DESA_R5_V1" store:Type="Tables" />
+          <EntitySet Name="GRTA_VARIABLES" EntityType="Self.GRTA_VARIABLES" Schema="MGR_DESA_R5_V1" store:Type="Tables" />
+          <EntitySet Name="GRTA_USUARIO_ROL" EntityType="Self.GRTA_USUARIO_ROL" store:Type="Tables" store:Schema="MGR_DESA_R5_V1">
+            <DefiningQuery>SELECT 
+"GRTA_USUARIO_ROL"."ID_USUARIO" AS "ID_USUARIO", 
+"GRTA_USUARIO_ROL"."ID_ROL" AS "ID_ROL", 
+"GRTA_USUARIO_ROL"."COMENTARIO" AS "COMENTARIO", 
+"GRTA_USUARIO_ROL"."ESTADO" AS "ESTADO", 
+"GRTA_USUARIO_ROL"."FECHA_REGISTRO" AS "FECHA_REGISTRO", 
+"GRTA_USUARIO_ROL"."FECHA_ELIMINACION" AS "FECHA_ELIMINACION", 
+"GRTA_USUARIO_ROL"."FECHA_MODIFICACION" AS "FECHA_MODIFICACION"
+FROM "MGR_DESA_R5_V1"."GRTA_USUARIO_ROL" "GRTA_USUARIO_ROL"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_COMPENDIO_SUJETO" EntityType="Self.VW_COMPENDIO_SUJETO" store:Type="Views" store:Schema="MGR_DESA_R5_V1">
+            <DefiningQuery>SELECT 
+"VW_COMPENDIO_SUJETO"."COD_" AS "COD_", 
+"VW_COMPENDIO_SUJETO"."NOMBRE_SUJETO" AS "NOMBRE_SUJETO", 
+"VW_COMPENDIO_SUJETO"."TABLA_" AS "TABLA_", 
+"VW_COMPENDIO_SUJETO"."ORIG_FUENTE" AS "ORIG_FUENTE", 
+"VW_COMPENDIO_SUJETO"."TIP_TABLA" AS "TIP_TABLA", 
+"VW_COMPENDIO_SUJETO"."FECHAS" AS "FECHAS", 
+"VW_COMPENDIO_SUJETO"."TABLAS_SUJETO" AS "TABLAS_SUJETO", 
+"VW_COMPENDIO_SUJETO"."SUJETO_RIESGO" AS "SUJETO_RIESGO", 
+"VW_COMPENDIO_SUJETO"."NOMBRE_TABLA" AS "NOMBRE_TABLA", 
+"VW_COMPENDIO_SUJETO"."CODIGO_ALTERNO" AS "CODIGO_ALTERNO", 
+"VW_COMPENDIO_SUJETO"."ORIGEN_FUENTE" AS "ORIGEN_FUENTE", 
+"VW_COMPENDIO_SUJETO"."TIPO_TABLA" AS "TIPO_TABLA", 
+"VW_COMPENDIO_SUJETO"."FECHA_INICIO_VIGENCIA" AS "FECHA_INICIO_VIGENCIA", 
+"VW_COMPENDIO_SUJETO"."FECHA_FIN_VIGENCIA" AS "FECHA_FIN_VIGENCIA", 
+"VW_COMPENDIO_SUJETO"."DESCRIPCION_BREVE" AS "DESCRIPCION_BREVE", 
+"VW_COMPENDIO_SUJETO"."NOMBRE" AS "NOMBRE", 
+"VW_COMPENDIO_SUJETO"."ID_PARAMETRO" AS "ID_PARAMETRO"
+FROM "MGR_DESA_R5_V1"."VW_COMPENDIO_SUJETO" "VW_COMPENDIO_SUJETO"</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="SYS_C0010224" Association="Self.SYS_C0010224">
+            <End Role="GRTA_SESSION" EntitySet="GRTA_SESSION" />
+            <End Role="GRTA_DECLARACIONES_PERFIL" EntitySet="GRTA_DECLARACIONES_PERFIL" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010335" Association="Self.SYS_C0010335">
+            <End Role="GRTA_SESSION" EntitySet="GRTA_SESSION" />
+            <End Role="GRTA_FUNCION_SUJETO" EntitySet="GRTA_FUNCION_SUJETO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010357" Association="Self.SYS_C0010357">
+            <End Role="GRTA_MEDIDAS" EntitySet="GRTA_MEDIDAS" />
+            <End Role="GRTA_MEDIDAS1" EntitySet="GRTA_MEDIDAS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010359" Association="Self.SYS_C0010359">
+            <End Role="GRTA_SESSION" EntitySet="GRTA_SESSION" />
+            <End Role="GRTA_MEDIDAS" EntitySet="GRTA_MEDIDAS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010366" Association="Self.SYS_C0010366">
+            <End Role="GRTA_DECLARACIONES_PERFIL" EntitySet="GRTA_DECLARACIONES_PERFIL" />
+            <End Role="GRTA_MENSAJES_SUJETO" EntitySet="GRTA_MENSAJES_SUJETO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010367" Association="Self.SYS_C0010367">
+            <End Role="GRTA_MEDIDAS" EntitySet="GRTA_MEDIDAS" />
+            <End Role="GRTA_MENSAJES_SUJETO" EntitySet="GRTA_MENSAJES_SUJETO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010387" Association="Self.SYS_C0010387">
+            <End Role="GRTA_SESSION" EntitySet="GRTA_SESSION" />
+            <End Role="GRTA_PARAMETROS" EntitySet="GRTA_PARAMETROS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010436" Association="Self.SYS_C0010436">
+            <End Role="GRTA_SESSION" EntitySet="GRTA_SESSION" />
+            <End Role="GRTA_VARIABLES" EntitySet="GRTA_VARIABLES" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010438" Association="Self.SYS_C0010438">
+            <End Role="GRTA_VARIABLES" EntitySet="GRTA_VARIABLES" />
+            <End Role="GRTA_VARIABLES1" EntitySet="GRTA_VARIABLES" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010449" Association="Self.SYS_C0010449">
+            <End Role="GRTA_USUARIO" EntitySet="GRTA_USUARIO" />
+            <End Role="GRTA_USUARIO_PROPIEDAD" EntitySet="GRTA_USUARIO_PROPIEDAD" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010450" Association="Self.SYS_C0010450">
+            <End Role="GRTA_USUARIO" EntitySet="GRTA_USUARIO" />
+            <End Role="GRTA_USUARIO_ROL" EntitySet="GRTA_USUARIO_ROL" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010459" Association="Self.SYS_C0010459">
+            <End Role="GRTA_USUARIO" EntitySet="GRTA_USUARIO" />
+            <End Role="GRTA_USUARIO_FUNCIONALIDAD" EntitySet="GRTA_USUARIO_FUNCIONALIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010461" Association="Self.SYS_C0010461">
+            <End Role="GRTA_USUARIO" EntitySet="GRTA_USUARIO" />
+            <End Role="GRTA_USUARIO_FUNC_OPERACION" EntitySet="GRTA_USUARIO_FUNC_OPERACION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ModelMGRContext" annotation:LazyLoadingEnabled="false" >
+          <EntitySet Name="GRTA_SESSION" EntityType="Model.GRTA_SESSION" />
+          <EntitySet Name="GRTA_DECLARACIONES_PERFIL" EntityType="Model.GRTA_DECLARACIONES_PERFIL" />
+          <EntitySet Name="GRTA_EVALUACION" EntityType="Model.GRTA_EVALUACION" />
+          <AssociationSet Name="SYS_C0010224" Association="Model.SYS_C0010224">
+            <End Role="GRTA_SESSION" EntitySet="GRTA_SESSION" />
+            <End Role="GRTA_DECLARACIONES_PERFIL" EntitySet="GRTA_DECLARACIONES_PERFIL" />
+          </AssociationSet>
+          <EntitySet Name="GRTA_FUNCION_SUJETO" EntityType="Model.GRTA_FUNCION_SUJETO" />
+          <EntitySet Name="GRTA_MEDIDAS" EntityType="Model.GRTA_MEDIDAS" />
+          <AssociationSet Name="SYS_C0010335" Association="Model.SYS_C0010335">
+            <End Role="GRTA_SESSION" EntitySet="GRTA_SESSION" />
+            <End Role="GRTA_FUNCION_SUJETO" EntitySet="GRTA_FUNCION_SUJETO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010357" Association="Model.SYS_C0010357">
+            <End Role="GRTA_MEDIDAS" EntitySet="GRTA_MEDIDAS" />
+            <End Role="GRTA_MEDIDAS1" EntitySet="GRTA_MEDIDAS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010359" Association="Model.SYS_C0010359">
+            <End Role="GRTA_SESSION" EntitySet="GRTA_SESSION" />
+            <End Role="GRTA_MEDIDAS" EntitySet="GRTA_MEDIDAS" />
+          </AssociationSet>
+          <EntitySet Name="GRTA_MENSAJES_SUJETO" EntityType="Model.GRTA_MENSAJES_SUJETO" />
+          <AssociationSet Name="SYS_C0010366" Association="Model.SYS_C0010366">
+            <End Role="GRTA_DECLARACIONES_PERFIL" EntitySet="GRTA_DECLARACIONES_PERFIL" />
+            <End Role="GRTA_MENSAJES_SUJETO" EntitySet="GRTA_MENSAJES_SUJETO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010367" Association="Model.SYS_C0010367">
+            <End Role="GRTA_MEDIDAS" EntitySet="GRTA_MEDIDAS" />
+            <End Role="GRTA_MENSAJES_SUJETO" EntitySet="GRTA_MENSAJES_SUJETO" />
+          </AssociationSet>
+          <EntitySet Name="GRTA_PARAMETROS" EntityType="Model.GRTA_PARAMETROS" />
+          <AssociationSet Name="SYS_C0010387" Association="Model.SYS_C0010387">
+            <End Role="GRTA_SESSION" EntitySet="GRTA_SESSION" />
+            <End Role="GRTA_PARAMETROS" EntitySet="GRTA_PARAMETROS" />
+          </AssociationSet>
+          <EntitySet Name="GRTA_VARIABLES" EntityType="Model.GRTA_VARIABLES" />
+          <AssociationSet Name="SYS_C0010436" Association="Model.SYS_C0010436">
+            <End Role="GRTA_SESSION" EntitySet="GRTA_SESSION" />
+            <End Role="GRTA_VARIABLES" EntitySet="GRTA_VARIABLES" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010438" Association="Model.SYS_C0010438">
+            <End Role="GRTA_VARIABLES" EntitySet="GRTA_VARIABLES" />
+            <End Role="GRTA_VARIABLES1" EntitySet="GRTA_VARIABLES" />
+          </AssociationSet>
+          <EntitySet Name="VW_COMPENDIO_SUJETO" EntityType="Model.VW_COMPENDIO_SUJETO" />
+          <EntitySet Name="GRTA_USUARIO_FUNC_OPERACION" EntityType="Model.GRTA_USUARIO_FUNC_OPERACION" />
+          <EntitySet Name="GRTA_USUARIO_FUNCIONALIDAD" EntityType="Model.GRTA_USUARIO_FUNCIONALIDAD" />
+          <EntitySet Name="GRTA_USUARIO_PROPIEDAD" EntityType="Model.GRTA_USUARIO_PROPIEDAD" />
+          <EntitySet Name="GRTA_USUARIO_ROL" EntityType="Model.GRTA_USUARIO_ROL" />
+          <EntitySet Name="GRTA_USUARIO" EntityType="Model.GRTA_USUARIO" />
+          <AssociationSet Name="SYS_C0010449" Association="Model.SYS_C0010449">
+            <End Role="GRTA_USUARIO" EntitySet="GRTA_USUARIO" />
+            <End Role="GRTA_USUARIO_PROPIEDAD" EntitySet="GRTA_USUARIO_PROPIEDAD" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010450" Association="Model.SYS_C0010450">
+            <End Role="GRTA_USUARIO" EntitySet="GRTA_USUARIO" />
+            <End Role="GRTA_USUARIO_ROL" EntitySet="GRTA_USUARIO_ROL" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010459" Association="Model.SYS_C0010459">
+            <End Role="GRTA_USUARIO" EntitySet="GRTA_USUARIO" />
+            <End Role="GRTA_USUARIO_FUNCIONALIDAD" EntitySet="GRTA_USUARIO_FUNCIONALIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010461" Association="Model.SYS_C0010461">
+            <End Role="GRTA_USUARIO" EntitySet="GRTA_USUARIO" />
+            <End Role="GRTA_USUARIO_FUNC_OPERACION" EntitySet="GRTA_USUARIO_FUNC_OPERACION" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="GRTA_SESSION">
+          <Key>
+            <PropertyRef Name="ID_SESSION" />
+          </Key>
+          <Property Name="ID_SESSION" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_USUARIO" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION_IP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" />
+          <Property Name="TOKEN" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GRTA_DECLARACIONES_PERFIL" Relationship="Model.SYS_C0010224" FromRole="GRTA_SESSION" ToRole="GRTA_DECLARACIONES_PERFIL" />
+          <NavigationProperty Name="GRTA_FUNCION_SUJETO" Relationship="Model.SYS_C0010335" FromRole="GRTA_SESSION" ToRole="GRTA_FUNCION_SUJETO" />
+          <NavigationProperty Name="GRTA_MEDIDAS" Relationship="Model.SYS_C0010359" FromRole="GRTA_SESSION" ToRole="GRTA_MEDIDAS" />
+          <NavigationProperty Name="GRTA_PARAMETROS" Relationship="Model.SYS_C0010387" FromRole="GRTA_SESSION" ToRole="GRTA_PARAMETROS" />
+          <NavigationProperty Name="GRTA_VARIABLES" Relationship="Model.SYS_C0010436" FromRole="GRTA_SESSION" ToRole="GRTA_VARIABLES" />
+        </EntityType>
+        <EntityType Name="GRTA_DECLARACIONES_PERFIL">
+          <Key>
+            <PropertyRef Name="ID_PERFIL" />
+          </Key>
+          <Property Name="ID_PERFIL" Type="Int64" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="Byte" />
+          <Property Name="IDENTIFICADOR_DECLARACION" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_REQUERIMIENTO" Type="Int32" />
+          <Property Name="TIPO_MOMENTO" Type="Int32" />
+          <Property Name="INDICADOR_ACTIVO" Type="Boolean" />
+          <Property Name="SELECCION_CASOS" Type="Int32" />
+          <Property Name="FECHA_INICIO" Type="DateTime" Precision="6" />
+          <Property Name="FECHA_TERMINO" Type="DateTime" Precision="6" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" />
+          <Property Name="INDICADOR_SELECCION" Type="Boolean" />
+          <Property Name="FECHA_DECLARACION" Type="DateTime" />
+          <Property Name="CLASE_MEDIDA" Type="Int32" />
+          <Property Name="FECHA_REGISTRO_IDX" Type="DateTime" />
+          <Property Name="TOTAL_LINEAS" Type="Int32" />
+          <Property Name="PERFIL_RIESGO" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="GRADO_RIESGO" Type="Int32" />
+          <Property Name="TIPO_MOTIVO" Type="Int32" />
+          <Property Name="DESCRIPCION_MOTIVO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_MOTIVO" Type="DateTime" />
+          <Property Name="SESSION_MOTIVO" Type="Int32" />
+          <NavigationProperty Name="GRTA_SESSION" Relationship="Model.SYS_C0010224" FromRole="GRTA_DECLARACIONES_PERFIL" ToRole="GRTA_SESSION" />
+          <NavigationProperty Name="GRTA_MENSAJES_SUJETO" Relationship="Model.SYS_C0010366" FromRole="GRTA_DECLARACIONES_PERFIL" ToRole="GRTA_MENSAJES_SUJETO" />
+        </EntityType>
+        <EntityType Name="GRTA_EVALUACION">
+          <Key>
+            <PropertyRef Name="ID_EVALUACION" />
+          </Key>
+          <Property Name="ID_EVALUACION" Type="Int32" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="Byte" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO_EVALUACION" Type="Int32" />
+          <Property Name="FECHA_INICIO_ANALISIS" Type="DateTime" />
+          <Property Name="FECHA_FIN_ANALISIS" Type="DateTime" />
+          <Property Name="TOTAL_DOCUMENTOS" Type="Int32" />
+          <Property Name="CLASE_MEDIDA" Type="Int32" />
+        </EntityType>
+        <Association Name="SYS_C0010224">
+          <End Type="Model.GRTA_SESSION" Role="GRTA_SESSION" Multiplicity="0..1" />
+          <End Type="Model.GRTA_DECLARACIONES_PERFIL" Role="GRTA_DECLARACIONES_PERFIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_SESSION">
+              <PropertyRef Name="ID_SESSION" />
+            </Principal>
+            <Dependent Role="GRTA_DECLARACIONES_PERFIL">
+              <PropertyRef Name="SESSION_MOTIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GRTA_FUNCION_SUJETO">
+          <Key>
+            <PropertyRef Name="SUJETO_RIESGO" />
+            <PropertyRef Name="TIPO_MEDIDA" />
+          </Key>
+          <Property Name="SUJETO_RIESGO" Type="Byte" Nullable="false" />
+          <Property Name="TIPO_MEDIDA" Type="Int32" Nullable="false" />
+          <Property Name="TIPO_FUNCION" Type="Int32" />
+          <Property Name="FUNCION_ANALISIS" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="FUNCION_PRODUCCION" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_INICIO_VIGENCIA" Type="DateTime" />
+          <Property Name="FECHA_FIN_VIGENCIA" Type="DateTime" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" />
+          <Property Name="SESSION_REGISTRO" Type="Int32" />
+          <NavigationProperty Name="GRTA_SESSION" Relationship="Model.SYS_C0010335" FromRole="GRTA_FUNCION_SUJETO" ToRole="GRTA_SESSION" />
+        </EntityType>
+        <EntityType Name="GRTA_MEDIDAS">
+          <Key>
+            <PropertyRef Name="ID_MEDIDA" />
+            <PropertyRef Name="VERSION_MEDIDA" />
+          </Key>
+          <Property Name="ID_MEDIDA" Type="Int32" Nullable="false" />
+          <Property Name="VERSION_MEDIDA" Type="Byte" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="Byte" />
+          <Property Name="TIPO_MEDIDA" Type="Int32" />
+          <Property Name="CLASE_MEDIDA" Type="Int32" />
+          <Property Name="ID_POLITICA" Type="Int16" />
+          <Property Name="ESTADO_MEDIDA" Type="Int32" />
+          <Property Name="JERARQUIA_MEDIDA" Type="Int32" />
+          <Property Name="NOMBRE_MEDIDA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_INICIO_VIGENCIA" Type="DateTime" />
+          <Property Name="FECHA_FIN_VIGENCIA" Type="DateTime" />
+          <Property Name="FECHA_INICIO_ANALISIS" Type="DateTime" />
+          <Property Name="FECHA_FIN_ANALISIS" Type="DateTime" />
+          <Property Name="VALOR_FRECUENCIA" Type="Byte" />
+          <Property Name="TIPO_FRECUENCIA" Type="Int32" />
+          <Property Name="RITMO_APRENDIZAJE" Type="Byte" />
+          <Property Name="TERMINO_MOMENTO" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="MEDIDA_PRECEDENTE" Type="Int32" />
+          <Property Name="VERSION_PRECEDENTE" Type="Byte" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" />
+          <Property Name="SESSION_REGISTRO" Type="Int32" />
+          <Property Name="FUNCION_ACTIVACION" Type="Int32" />
+          <Property Name="FLAG_REPLICACION" Type="Boolean" />
+          <NavigationProperty Name="GRTA_MEDIDAS1" Relationship="Model.SYS_C0010357" FromRole="GRTA_MEDIDAS" ToRole="GRTA_MEDIDAS1" />
+          <NavigationProperty Name="GRTA_MEDIDAS2" Relationship="Model.SYS_C0010357" FromRole="GRTA_MEDIDAS1" ToRole="GRTA_MEDIDAS" />
+          <NavigationProperty Name="GRTA_SESSION" Relationship="Model.SYS_C0010359" FromRole="GRTA_MEDIDAS" ToRole="GRTA_SESSION" />
+          <NavigationProperty Name="GRTA_MENSAJES_SUJETO" Relationship="Model.SYS_C0010367" FromRole="GRTA_MEDIDAS" ToRole="GRTA_MENSAJES_SUJETO" />
+        </EntityType>
+        <Association Name="SYS_C0010335">
+          <End Type="Model.GRTA_SESSION" Role="GRTA_SESSION" Multiplicity="0..1" />
+          <End Type="Model.GRTA_FUNCION_SUJETO" Role="GRTA_FUNCION_SUJETO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_SESSION">
+              <PropertyRef Name="ID_SESSION" />
+            </Principal>
+            <Dependent Role="GRTA_FUNCION_SUJETO">
+              <PropertyRef Name="SESSION_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010357">
+          <End Type="Model.GRTA_MEDIDAS" Role="GRTA_MEDIDAS" Multiplicity="1" />
+          <End Type="Model.GRTA_MEDIDAS" Role="GRTA_MEDIDAS1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_MEDIDAS">
+              <PropertyRef Name="ID_MEDIDA" />
+              <PropertyRef Name="VERSION_MEDIDA" />
+            </Principal>
+            <Dependent Role="GRTA_MEDIDAS1">
+              <PropertyRef Name="ID_MEDIDA" />
+              <PropertyRef Name="VERSION_MEDIDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010359">
+          <End Type="Model.GRTA_SESSION" Role="GRTA_SESSION" Multiplicity="0..1" />
+          <End Type="Model.GRTA_MEDIDAS" Role="GRTA_MEDIDAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_SESSION">
+              <PropertyRef Name="ID_SESSION" />
+            </Principal>
+            <Dependent Role="GRTA_MEDIDAS">
+              <PropertyRef Name="SESSION_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GRTA_MENSAJES_SUJETO">
+          <Key>
+            <PropertyRef Name="ID_MENSAJE_SUJETO" />
+          </Key>
+          <Property Name="ID_MENSAJE_SUJETO" Type="Int64" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="Byte" />
+          <Property Name="ID_PERFIL" Type="Int64" />
+          <Property Name="ID_MEDIDA" Type="Int32" />
+          <Property Name="VERSION_MEDIDA" Type="Byte" />
+          <Property Name="CONDICION_MEDIDAS" Type="Int32" />
+          <Property Name="IDENTIFICADOR_DECLARACION" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="INDICADOR_PROCESO" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GRTA_DECLARACIONES_PERFIL" Relationship="Model.SYS_C0010366" FromRole="GRTA_MENSAJES_SUJETO" ToRole="GRTA_DECLARACIONES_PERFIL" />
+          <NavigationProperty Name="GRTA_MEDIDAS" Relationship="Model.SYS_C0010367" FromRole="GRTA_MENSAJES_SUJETO" ToRole="GRTA_MEDIDAS" />
+        </EntityType>
+        <Association Name="SYS_C0010366">
+          <End Type="Model.GRTA_DECLARACIONES_PERFIL" Role="GRTA_DECLARACIONES_PERFIL" Multiplicity="0..1" />
+          <End Type="Model.GRTA_MENSAJES_SUJETO" Role="GRTA_MENSAJES_SUJETO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_DECLARACIONES_PERFIL">
+              <PropertyRef Name="ID_PERFIL" />
+            </Principal>
+            <Dependent Role="GRTA_MENSAJES_SUJETO">
+              <PropertyRef Name="ID_PERFIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010367">
+          <End Type="Model.GRTA_MEDIDAS" Role="GRTA_MEDIDAS" Multiplicity="0..1" />
+          <End Type="Model.GRTA_MENSAJES_SUJETO" Role="GRTA_MENSAJES_SUJETO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_MEDIDAS">
+              <PropertyRef Name="ID_MEDIDA" />
+              <PropertyRef Name="VERSION_MEDIDA" />
+            </Principal>
+            <Dependent Role="GRTA_MENSAJES_SUJETO">
+              <PropertyRef Name="ID_MEDIDA" />
+              <PropertyRef Name="VERSION_MEDIDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GRTA_PARAMETROS">
+          <Key>
+            <PropertyRef Name="ID_PARAMETRO" />
+          </Key>
+          <Property Name="ID_PARAMETRO" Type="Int16" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="Byte" />
+          <Property Name="CLASE_PARAMETRO" Type="Int32" />
+          <Property Name="VALOR_SUMINISTRADO" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="VALOR_CODIGO_VARIABLE" Type="Int16" />
+          <Property Name="VALOR_IDENTIFICACION_SUJETO" Type="Int16" />
+          <Property Name="DESCRIPCION_BREVE" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_DATO" Type="Int32" />
+          <Property Name="FECHA_INICIO_VIGENCIA" Type="DateTime" />
+          <Property Name="FECHA_FIN_VIGENCIA" Type="DateTime" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" />
+          <Property Name="SESSION_REGISTRO" Type="Int32" />
+          <NavigationProperty Name="GRTA_SESSION" Relationship="Model.SYS_C0010387" FromRole="GRTA_PARAMETROS" ToRole="GRTA_SESSION" />
+        </EntityType>
+        <Association Name="SYS_C0010387">
+          <End Type="Model.GRTA_SESSION" Role="GRTA_SESSION" Multiplicity="0..1" />
+          <End Type="Model.GRTA_PARAMETROS" Role="GRTA_PARAMETROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_SESSION">
+              <PropertyRef Name="ID_SESSION" />
+            </Principal>
+            <Dependent Role="GRTA_PARAMETROS">
+              <PropertyRef Name="SESSION_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GRTA_VARIABLES">
+          <Key>
+            <PropertyRef Name="CODIGO_VARIABLE" />
+          </Key>
+          <Property Name="CODIGO_VARIABLE" Type="Int16" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="Byte" />
+          <Property Name="DESCRIPCION_BREVE" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION_COMPLETA" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_VARIABLE" Type="Int32" />
+          <Property Name="TABLA_TRANSACCIONAL" Type="Int32" />
+          <Property Name="EXPRESION_TRANSACCIONAL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TABLA_CONSOLIDACION" Type="Int32" />
+          <Property Name="EXPRESION_CONSOLIDACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_DATO" Type="Int32" />
+          <Property Name="MODO_USO" Type="Int32" />
+          <Property Name="NUMERO_OCURRENCIAS" Type="Int32" />
+          <Property Name="MODO_OBTENCION" Type="Int32" />
+          <Property Name="INDICADOR_PRESENCIA" Type="Int32" />
+          <Property Name="TABLA_CODIFICACION" Type="Int16" />
+          <Property Name="FECHA_FIN_VIGENCIA" Type="DateTime" />
+          <Property Name="FECHA_INICIO_VIGENCIA" Type="DateTime" />
+          <Property Name="QUERY_AUTOGENERADO" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="VARIABLE_CATALOGO" Type="Int16" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" />
+          <Property Name="SESSION_REGISTRO" Type="Int32" />
+          <Property Name="CLASIFICACION_DATA" Type="Int32" />
+          <NavigationProperty Name="GRTA_SESSION" Relationship="Model.SYS_C0010436" FromRole="GRTA_VARIABLES" ToRole="GRTA_SESSION" />
+          <NavigationProperty Name="GRTA_VARIABLES1" Relationship="Model.SYS_C0010438" FromRole="GRTA_VARIABLES" ToRole="GRTA_VARIABLES1" />
+          <NavigationProperty Name="GRTA_VARIABLES2" Relationship="Model.SYS_C0010438" FromRole="GRTA_VARIABLES1" ToRole="GRTA_VARIABLES" />
+        </EntityType>
+        <Association Name="SYS_C0010436">
+          <End Type="Model.GRTA_SESSION" Role="GRTA_SESSION" Multiplicity="0..1" />
+          <End Type="Model.GRTA_VARIABLES" Role="GRTA_VARIABLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_SESSION">
+              <PropertyRef Name="ID_SESSION" />
+            </Principal>
+            <Dependent Role="GRTA_VARIABLES">
+              <PropertyRef Name="SESSION_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010438">
+          <End Type="Model.GRTA_VARIABLES" Role="GRTA_VARIABLES" Multiplicity="1" />
+          <End Type="Model.GRTA_VARIABLES" Role="GRTA_VARIABLES1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_VARIABLES">
+              <PropertyRef Name="CODIGO_VARIABLE" />
+            </Principal>
+            <Dependent Role="GRTA_VARIABLES1">
+              <PropertyRef Name="CODIGO_VARIABLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VW_COMPENDIO_SUJETO">
+          <Key>
+            <PropertyRef Name="COD_" />
+            <PropertyRef Name="TABLAS_SUJETO" />
+          </Key>
+          <Property Name="COD_" Type="Int16" Nullable="false" />
+          <Property Name="NOMBRE_SUJETO" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="TABLA_" Type="String" MaxLength="653" FixedLength="false" Unicode="false" />
+          <Property Name="ORIG_FUENTE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TIP_TABLA" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="FECHAS" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="TABLAS_SUJETO" Type="Int16" Nullable="false" />
+          <Property Name="SUJETO_RIESGO" Type="Byte" />
+          <Property Name="NOMBRE_TABLA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGO_ALTERNO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ORIGEN_FUENTE" Type="Int32" />
+          <Property Name="TIPO_TABLA" Type="Int32" />
+          <Property Name="FECHA_INICIO_VIGENCIA" Type="DateTime" />
+          <Property Name="FECHA_FIN_VIGENCIA" Type="DateTime" />
+          <Property Name="DESCRIPCION_BREVE" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ID_PARAMETRO" Type="Int16" />
+        </EntityType>
+        <EntityType Name="GRTA_USUARIO_FUNC_OPERACION">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_FUNCIONALIDAD" />
+            <PropertyRef Name="ID_OPERACION" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_FUNCIONALIDAD" Type="Int32" Nullable="false" />
+          <Property Name="ID_OPERACION" Type="Int32" Nullable="false" />
+          <Property Name="ESTADO" Type="Boolean" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" />
+          <Property Name="FECHA_ELIMINACION" Type="DateTime" />
+          <Property Name="FECHA_MODIFICACION" Type="DateTime" />
+          <NavigationProperty Name="GRTA_USUARIO" Relationship="Model.SYS_C0010461" FromRole="GRTA_USUARIO_FUNC_OPERACION" ToRole="GRTA_USUARIO" />
+        </EntityType>
+        <EntityType Name="GRTA_USUARIO_FUNCIONALIDAD">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_FUNCIONALIDAD" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_FUNCIONALIDAD" Type="Int32" Nullable="false" />
+          <Property Name="ESTADO" Type="Boolean" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" />
+          <Property Name="FECHA_ELIMINACION" Type="DateTime" />
+          <Property Name="FECHA_MODIFICACION" Type="DateTime" />
+          <NavigationProperty Name="GRTA_USUARIO" Relationship="Model.SYS_C0010459" FromRole="GRTA_USUARIO_FUNCIONALIDAD" ToRole="GRTA_USUARIO" />
+        </EntityType>
+        <EntityType Name="GRTA_USUARIO_PROPIEDAD">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_PROPIEDAD" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_PROPIEDAD" Type="Int32" Nullable="false" />
+          <Property Name="VALOR" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GRTA_USUARIO" Relationship="Model.SYS_C0010449" FromRole="GRTA_USUARIO_PROPIEDAD" ToRole="GRTA_USUARIO" />
+        </EntityType>
+        <EntityType Name="GRTA_USUARIO_ROL">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_ROL" />
+            <PropertyRef Name="ESTADO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" />
+          <Property Name="COMENTARIO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="Int32" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" />
+          <Property Name="FECHA_ELIMINACION" Type="DateTime" />
+          <Property Name="FECHA_MODIFICACION" Type="DateTime" />
+          <NavigationProperty Name="GRTA_USUARIO" Relationship="Model.SYS_C0010450" FromRole="GRTA_USUARIO_ROL" ToRole="GRTA_USUARIO" />
+        </EntityType>
+        <EntityType Name="GRTA_USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="USUARIO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CLAVE" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PRIMER_NOMBRE" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="SEGUNDO_NOMBRE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PRIMER_APELLIDO" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="SEGUNDO_APELLIDO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="FOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="USUARIO_ADMINISTRADOR" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ESTADO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="VIGENCIA_CLAVE" Type="DateTime" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" />
+          <Property Name="FECHA_ELIMINACION" Type="DateTime" />
+          <Property Name="FECHA_MODIFICACION" Type="DateTime" />
+          <NavigationProperty Name="GRTA_USUARIO_PROPIEDAD" Relationship="Model.SYS_C0010449" FromRole="GRTA_USUARIO" ToRole="GRTA_USUARIO_PROPIEDAD" />
+          <NavigationProperty Name="GRTA_USUARIO_ROL" Relationship="Model.SYS_C0010450" FromRole="GRTA_USUARIO" ToRole="GRTA_USUARIO_ROL" />
+          <NavigationProperty Name="GRTA_USUARIO_FUNCIONALIDAD" Relationship="Model.SYS_C0010459" FromRole="GRTA_USUARIO" ToRole="GRTA_USUARIO_FUNCIONALIDAD" />
+          <NavigationProperty Name="GRTA_USUARIO_FUNC_OPERACION" Relationship="Model.SYS_C0010461" FromRole="GRTA_USUARIO" ToRole="GRTA_USUARIO_FUNC_OPERACION" />
+        </EntityType>
+        <Association Name="SYS_C0010449">
+          <End Type="Model.GRTA_USUARIO" Role="GRTA_USUARIO" Multiplicity="1" />
+          <End Type="Model.GRTA_USUARIO_PROPIEDAD" Role="GRTA_USUARIO_PROPIEDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="GRTA_USUARIO_PROPIEDAD">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010450">
+          <End Type="Model.GRTA_USUARIO" Role="GRTA_USUARIO" Multiplicity="1" />
+          <End Type="Model.GRTA_USUARIO_ROL" Role="GRTA_USUARIO_ROL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="GRTA_USUARIO_ROL">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010459">
+          <End Type="Model.GRTA_USUARIO" Role="GRTA_USUARIO" Multiplicity="1" />
+          <End Type="Model.GRTA_USUARIO_FUNCIONALIDAD" Role="GRTA_USUARIO_FUNCIONALIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="GRTA_USUARIO_FUNCIONALIDAD">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010461">
+          <End Type="Model.GRTA_USUARIO" Role="GRTA_USUARIO" Multiplicity="1" />
+          <End Type="Model.GRTA_USUARIO_FUNC_OPERACION" Role="GRTA_USUARIO_FUNC_OPERACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRTA_USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="GRTA_USUARIO_FUNC_OPERACION">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelMGRContext" >
+          <EntitySetMapping Name="GRTA_SESSION">
+            <EntityTypeMapping TypeName="Model.GRTA_SESSION">
+              <MappingFragment StoreEntitySet="GRTA_SESSION">
+                <ScalarProperty Name="TOKEN" ColumnName="TOKEN" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="DIRECCION_IP" ColumnName="DIRECCION_IP" />
+                <ScalarProperty Name="CODIGO_USUARIO" ColumnName="CODIGO_USUARIO" />
+                <ScalarProperty Name="ID_SESSION" ColumnName="ID_SESSION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRTA_DECLARACIONES_PERFIL">
+            <EntityTypeMapping TypeName="Model.GRTA_DECLARACIONES_PERFIL">
+              <MappingFragment StoreEntitySet="GRTA_DECLARACIONES_PERFIL">
+                <ScalarProperty Name="SESSION_MOTIVO" ColumnName="SESSION_MOTIVO" />
+                <ScalarProperty Name="FECHA_MOTIVO" ColumnName="FECHA_MOTIVO" />
+                <ScalarProperty Name="DESCRIPCION_MOTIVO" ColumnName="DESCRIPCION_MOTIVO" />
+                <ScalarProperty Name="TIPO_MOTIVO" ColumnName="TIPO_MOTIVO" />
+                <ScalarProperty Name="GRADO_RIESGO" ColumnName="GRADO_RIESGO" />
+                <ScalarProperty Name="PERFIL_RIESGO" ColumnName="PERFIL_RIESGO" />
+                <ScalarProperty Name="TOTAL_LINEAS" ColumnName="TOTAL_LINEAS" />
+                <ScalarProperty Name="FECHA_REGISTRO_IDX" ColumnName="FECHA_REGISTRO_IDX" />
+                <ScalarProperty Name="CLASE_MEDIDA" ColumnName="CLASE_MEDIDA" />
+                <ScalarProperty Name="FECHA_DECLARACION" ColumnName="FECHA_DECLARACION" />
+                <ScalarProperty Name="INDICADOR_SELECCION" ColumnName="INDICADOR_SELECCION" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="FECHA_TERMINO" ColumnName="FECHA_TERMINO" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="SELECCION_CASOS" ColumnName="SELECCION_CASOS" />
+                <ScalarProperty Name="INDICADOR_ACTIVO" ColumnName="INDICADOR_ACTIVO" />
+                <ScalarProperty Name="TIPO_MOMENTO" ColumnName="TIPO_MOMENTO" />
+                <ScalarProperty Name="TIPO_REQUERIMIENTO" ColumnName="TIPO_REQUERIMIENTO" />
+                <ScalarProperty Name="IDENTIFICADOR_DECLARACION" ColumnName="IDENTIFICADOR_DECLARACION" />
+                <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+                <ScalarProperty Name="ID_PERFIL" ColumnName="ID_PERFIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRTA_EVALUACION">
+            <EntityTypeMapping TypeName="Model.GRTA_EVALUACION">
+              <MappingFragment StoreEntitySet="GRTA_EVALUACION">
+                <ScalarProperty Name="CLASE_MEDIDA" ColumnName="CLASE_MEDIDA" />
+                <ScalarProperty Name="TOTAL_DOCUMENTOS" ColumnName="TOTAL_DOCUMENTOS" />
+                <ScalarProperty Name="FECHA_FIN_ANALISIS" ColumnName="FECHA_FIN_ANALISIS" />
+                <ScalarProperty Name="FECHA_INICIO_ANALISIS" ColumnName="FECHA_INICIO_ANALISIS" />
+                <ScalarProperty Name="ESTADO_EVALUACION" ColumnName="ESTADO_EVALUACION" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+                <ScalarProperty Name="ID_EVALUACION" ColumnName="ID_EVALUACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRTA_FUNCION_SUJETO">
+            <EntityTypeMapping TypeName="Model.GRTA_FUNCION_SUJETO">
+              <MappingFragment StoreEntitySet="GRTA_FUNCION_SUJETO">
+                <ScalarProperty Name="SESSION_REGISTRO" ColumnName="SESSION_REGISTRO" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="FECHA_FIN_VIGENCIA" ColumnName="FECHA_FIN_VIGENCIA" />
+                <ScalarProperty Name="FECHA_INICIO_VIGENCIA" ColumnName="FECHA_INICIO_VIGENCIA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FUNCION_PRODUCCION" ColumnName="FUNCION_PRODUCCION" />
+                <ScalarProperty Name="FUNCION_ANALISIS" ColumnName="FUNCION_ANALISIS" />
+                <ScalarProperty Name="TIPO_FUNCION" ColumnName="TIPO_FUNCION" />
+                <ScalarProperty Name="TIPO_MEDIDA" ColumnName="TIPO_MEDIDA" />
+                <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRTA_MEDIDAS">
+            <EntityTypeMapping TypeName="Model.GRTA_MEDIDAS">
+              <MappingFragment StoreEntitySet="GRTA_MEDIDAS">
+                <ScalarProperty Name="FLAG_REPLICACION" ColumnName="FLAG_REPLICACION" />
+                <ScalarProperty Name="FUNCION_ACTIVACION" ColumnName="FUNCION_ACTIVACION" />
+                <ScalarProperty Name="SESSION_REGISTRO" ColumnName="SESSION_REGISTRO" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="VERSION_PRECEDENTE" ColumnName="VERSION_PRECEDENTE" />
+                <ScalarProperty Name="MEDIDA_PRECEDENTE" ColumnName="MEDIDA_PRECEDENTE" />
+                <ScalarProperty Name="TERMINO_MOMENTO" ColumnName="TERMINO_MOMENTO" />
+                <ScalarProperty Name="RITMO_APRENDIZAJE" ColumnName="RITMO_APRENDIZAJE" />
+                <ScalarProperty Name="TIPO_FRECUENCIA" ColumnName="TIPO_FRECUENCIA" />
+                <ScalarProperty Name="VALOR_FRECUENCIA" ColumnName="VALOR_FRECUENCIA" />
+                <ScalarProperty Name="FECHA_FIN_ANALISIS" ColumnName="FECHA_FIN_ANALISIS" />
+                <ScalarProperty Name="FECHA_INICIO_ANALISIS" ColumnName="FECHA_INICIO_ANALISIS" />
+                <ScalarProperty Name="FECHA_FIN_VIGENCIA" ColumnName="FECHA_FIN_VIGENCIA" />
+                <ScalarProperty Name="FECHA_INICIO_VIGENCIA" ColumnName="FECHA_INICIO_VIGENCIA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NOMBRE_MEDIDA" ColumnName="NOMBRE_MEDIDA" />
+                <ScalarProperty Name="JERARQUIA_MEDIDA" ColumnName="JERARQUIA_MEDIDA" />
+                <ScalarProperty Name="ESTADO_MEDIDA" ColumnName="ESTADO_MEDIDA" />
+                <ScalarProperty Name="ID_POLITICA" ColumnName="ID_POLITICA" />
+                <ScalarProperty Name="CLASE_MEDIDA" ColumnName="CLASE_MEDIDA" />
+                <ScalarProperty Name="TIPO_MEDIDA" ColumnName="TIPO_MEDIDA" />
+                <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+                <ScalarProperty Name="VERSION_MEDIDA" ColumnName="VERSION_MEDIDA" />
+                <ScalarProperty Name="ID_MEDIDA" ColumnName="ID_MEDIDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRTA_MENSAJES_SUJETO">
+            <EntityTypeMapping TypeName="Model.GRTA_MENSAJES_SUJETO">
+              <MappingFragment StoreEntitySet="GRTA_MENSAJES_SUJETO">
+                <ScalarProperty Name="INDICADOR_PROCESO" ColumnName="INDICADOR_PROCESO" />
+                <ScalarProperty Name="IDENTIFICADOR_DECLARACION" ColumnName="IDENTIFICADOR_DECLARACION" />
+                <ScalarProperty Name="CONDICION_MEDIDAS" ColumnName="CONDICION_MEDIDAS" />
+                <ScalarProperty Name="VERSION_MEDIDA" ColumnName="VERSION_MEDIDA" />
+                <ScalarProperty Name="ID_MEDIDA" ColumnName="ID_MEDIDA" />
+                <ScalarProperty Name="ID_PERFIL" ColumnName="ID_PERFIL" />
+                <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+                <ScalarProperty Name="ID_MENSAJE_SUJETO" ColumnName="ID_MENSAJE_SUJETO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRTA_PARAMETROS">
+            <EntityTypeMapping TypeName="Model.GRTA_PARAMETROS">
+              <MappingFragment StoreEntitySet="GRTA_PARAMETROS">
+                <ScalarProperty Name="SESSION_REGISTRO" ColumnName="SESSION_REGISTRO" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="FECHA_FIN_VIGENCIA" ColumnName="FECHA_FIN_VIGENCIA" />
+                <ScalarProperty Name="FECHA_INICIO_VIGENCIA" ColumnName="FECHA_INICIO_VIGENCIA" />
+                <ScalarProperty Name="TIPO_DATO" ColumnName="TIPO_DATO" />
+                <ScalarProperty Name="DESCRIPCION_BREVE" ColumnName="DESCRIPCION_BREVE" />
+                <ScalarProperty Name="VALOR_IDENTIFICACION_SUJETO" ColumnName="VALOR_IDENTIFICACION_SUJETO" />
+                <ScalarProperty Name="VALOR_CODIGO_VARIABLE" ColumnName="VALOR_CODIGO_VARIABLE" />
+                <ScalarProperty Name="VALOR_SUMINISTRADO" ColumnName="VALOR_SUMINISTRADO" />
+                <ScalarProperty Name="CLASE_PARAMETRO" ColumnName="CLASE_PARAMETRO" />
+                <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+                <ScalarProperty Name="ID_PARAMETRO" ColumnName="ID_PARAMETRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRTA_VARIABLES">
+            <EntityTypeMapping TypeName="Model.GRTA_VARIABLES">
+              <MappingFragment StoreEntitySet="GRTA_VARIABLES">
+                <ScalarProperty Name="CLASIFICACION_DATA" ColumnName="CLASIFICACION_DATA" />
+                <ScalarProperty Name="SESSION_REGISTRO" ColumnName="SESSION_REGISTRO" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="VARIABLE_CATALOGO" ColumnName="VARIABLE_CATALOGO" />
+                <ScalarProperty Name="QUERY_AUTOGENERADO" ColumnName="QUERY_AUTOGENERADO" />
+                <ScalarProperty Name="FECHA_INICIO_VIGENCIA" ColumnName="FECHA_INICIO_VIGENCIA" />
+                <ScalarProperty Name="FECHA_FIN_VIGENCIA" ColumnName="FECHA_FIN_VIGENCIA" />
+                <ScalarProperty Name="TABLA_CODIFICACION" ColumnName="TABLA_CODIFICACION" />
+                <ScalarProperty Name="INDICADOR_PRESENCIA" ColumnName="INDICADOR_PRESENCIA" />
+                <ScalarProperty Name="MODO_OBTENCION" ColumnName="MODO_OBTENCION" />
+                <ScalarProperty Name="NUMERO_OCURRENCIAS" ColumnName="NUMERO_OCURRENCIAS" />
+                <ScalarProperty Name="MODO_USO" ColumnName="MODO_USO" />
+                <ScalarProperty Name="TIPO_DATO" ColumnName="TIPO_DATO" />
+                <ScalarProperty Name="EXPRESION_CONSOLIDACION" ColumnName="EXPRESION_CONSOLIDACION" />
+                <ScalarProperty Name="TABLA_CONSOLIDACION" ColumnName="TABLA_CONSOLIDACION" />
+                <ScalarProperty Name="EXPRESION_TRANSACCIONAL" ColumnName="EXPRESION_TRANSACCIONAL" />
+                <ScalarProperty Name="TABLA_TRANSACCIONAL" ColumnName="TABLA_TRANSACCIONAL" />
+                <ScalarProperty Name="TIPO_VARIABLE" ColumnName="TIPO_VARIABLE" />
+                <ScalarProperty Name="DESCRIPCION_COMPLETA" ColumnName="DESCRIPCION_COMPLETA" />
+                <ScalarProperty Name="DESCRIPCION_BREVE" ColumnName="DESCRIPCION_BREVE" />
+                <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+                <ScalarProperty Name="CODIGO_VARIABLE" ColumnName="CODIGO_VARIABLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_COMPENDIO_SUJETO">
+            <EntityTypeMapping TypeName="Model.VW_COMPENDIO_SUJETO">
+              <MappingFragment StoreEntitySet="VW_COMPENDIO_SUJETO">
+                <ScalarProperty Name="ID_PARAMETRO" ColumnName="ID_PARAMETRO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION_BREVE" ColumnName="DESCRIPCION_BREVE" />
+                <ScalarProperty Name="FECHA_FIN_VIGENCIA" ColumnName="FECHA_FIN_VIGENCIA" />
+                <ScalarProperty Name="FECHA_INICIO_VIGENCIA" ColumnName="FECHA_INICIO_VIGENCIA" />
+                <ScalarProperty Name="TIPO_TABLA" ColumnName="TIPO_TABLA" />
+                <ScalarProperty Name="ORIGEN_FUENTE" ColumnName="ORIGEN_FUENTE" />
+                <ScalarProperty Name="CODIGO_ALTERNO" ColumnName="CODIGO_ALTERNO" />
+                <ScalarProperty Name="NOMBRE_TABLA" ColumnName="NOMBRE_TABLA" />
+                <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+                <ScalarProperty Name="TABLAS_SUJETO" ColumnName="TABLAS_SUJETO" />
+                <ScalarProperty Name="FECHAS" ColumnName="FECHAS" />
+                <ScalarProperty Name="TIP_TABLA" ColumnName="TIP_TABLA" />
+                <ScalarProperty Name="ORIG_FUENTE" ColumnName="ORIG_FUENTE" />
+                <ScalarProperty Name="TABLA_" ColumnName="TABLA_" />
+                <ScalarProperty Name="NOMBRE_SUJETO" ColumnName="NOMBRE_SUJETO" />
+                <ScalarProperty Name="COD_" ColumnName="COD_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRTA_USUARIO_FUNC_OPERACION">
+            <EntityTypeMapping TypeName="Model.GRTA_USUARIO_FUNC_OPERACION">
+              <MappingFragment StoreEntitySet="GRTA_USUARIO_FUNC_OPERACION">
+                <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+                <ScalarProperty Name="FECHA_ELIMINACION" ColumnName="FECHA_ELIMINACION" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ID_OPERACION" ColumnName="ID_OPERACION" />
+                <ScalarProperty Name="ID_FUNCIONALIDAD" ColumnName="ID_FUNCIONALIDAD" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRTA_USUARIO_FUNCIONALIDAD">
+            <EntityTypeMapping TypeName="Model.GRTA_USUARIO_FUNCIONALIDAD">
+              <MappingFragment StoreEntitySet="GRTA_USUARIO_FUNCIONALIDAD">
+                <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+                <ScalarProperty Name="FECHA_ELIMINACION" ColumnName="FECHA_ELIMINACION" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ID_FUNCIONALIDAD" ColumnName="ID_FUNCIONALIDAD" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRTA_USUARIO_PROPIEDAD">
+            <EntityTypeMapping TypeName="Model.GRTA_USUARIO_PROPIEDAD">
+              <MappingFragment StoreEntitySet="GRTA_USUARIO_PROPIEDAD">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+                <ScalarProperty Name="ID_PROPIEDAD" ColumnName="ID_PROPIEDAD" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRTA_USUARIO_ROL">
+            <EntityTypeMapping TypeName="Model.GRTA_USUARIO_ROL">
+              <MappingFragment StoreEntitySet="GRTA_USUARIO_ROL">
+                <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+                <ScalarProperty Name="FECHA_ELIMINACION" ColumnName="FECHA_ELIMINACION" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRTA_USUARIO">
+            <EntityTypeMapping TypeName="Model.GRTA_USUARIO">
+              <MappingFragment StoreEntitySet="GRTA_USUARIO">
+                <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+                <ScalarProperty Name="FECHA_ELIMINACION" ColumnName="FECHA_ELIMINACION" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="VIGENCIA_CLAVE" ColumnName="VIGENCIA_CLAVE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="USUARIO_ADMINISTRADOR" ColumnName="USUARIO_ADMINISTRADOR" />
+                <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SEGUNDO_APELLIDO" ColumnName="SEGUNDO_APELLIDO" />
+                <ScalarProperty Name="PRIMER_APELLIDO" ColumnName="PRIMER_APELLIDO" />
+                <ScalarProperty Name="SEGUNDO_NOMBRE" ColumnName="SEGUNDO_NOMBRE" />
+                <ScalarProperty Name="PRIMER_NOMBRE" ColumnName="PRIMER_NOMBRE" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

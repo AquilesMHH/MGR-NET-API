@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d0c5cbe123274f66a39fefa933b77a32" Name="Diagram1" ZoomLevel="46" >
+        <EntityTypeShape EntityType="Model.GRTA_SESSION" Width="1.5" PointX="0.75" PointY="3.5" />
+        <EntityTypeShape EntityType="Model.GRTA_DECLARACIONES_PERFIL" Width="1.5" PointX="3.625" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.GRTA_EVALUACION" Width="1.5" PointX="6.375" PointY="12.125" />
+        <AssociationConnector Association="Model.SYS_C0010224" />
+        <EntityTypeShape EntityType="Model.GRTA_FUNCION_SUJETO" Width="1.5" PointX="6.625" PointY="8.25" />
+        <EntityTypeShape EntityType="Model.GRTA_MEDIDAS" Width="1.5" PointX="6.625" PointY="0.75" />
+        <AssociationConnector Association="Model.SYS_C0010335" />
+        <AssociationConnector Association="Model.SYS_C0010357" />
+        <AssociationConnector Association="Model.SYS_C0010359" />
+        <EntityTypeShape EntityType="Model.GRTA_MENSAJES_SUJETO" Width="1.5" PointX="8.875" PointY="2.5" />
+        <AssociationConnector Association="Model.SYS_C0010366" />
+        <AssociationConnector Association="Model.SYS_C0010367" />
+        <EntityTypeShape EntityType="Model.GRTA_PARAMETROS" Width="1.5" PointX="6.375" PointY="15.375" />
+        <AssociationConnector Association="Model.SYS_C0010387" />
+        <EntityTypeShape EntityType="Model.GRTA_VARIABLES" Width="1.5" PointX="11" PointY="0.625" />
+        <AssociationConnector Association="Model.SYS_C0010436" />
+        <AssociationConnector Association="Model.SYS_C0010438" />
+        <EntityTypeShape EntityType="Model.VW_COMPENDIO_SUJETO" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Model.GRTA_USUARIO_FUNC_OPERACION" Width="1.5" PointX="11.625" PointY="12.25" />
+        <EntityTypeShape EntityType="Model.GRTA_USUARIO_FUNCIONALIDAD" Width="1.5" PointX="11.625" PointY="15.5" />
+        <EntityTypeShape EntityType="Model.GRTA_USUARIO_PROPIEDAD" Width="1.5" PointX="11.625" PointY="18.625" />
+        <EntityTypeShape EntityType="Model.GRTA_USUARIO_ROL" Width="1.5" PointX="11.625" PointY="8.875" />
+        <EntityTypeShape EntityType="Model.GRTA_USUARIO" Width="1.5" PointX="9.375" PointY="12.375" />
+        <AssociationConnector Association="Model.SYS_C0010449" />
+        <AssociationConnector Association="Model.SYS_C0010450" />
+        <AssociationConnector Association="Model.SYS_C0010459" />
+        <AssociationConnector Association="Model.SYS_C0010461" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

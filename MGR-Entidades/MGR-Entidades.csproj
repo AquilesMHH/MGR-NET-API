@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C0273420-6C88-4A44-ADD6-ACA8743E642B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MGR_Entidades</RootNamespace>
+    <AssemblyName>MGR-Entidades</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entidad\AmbitosSujetoDto.cs" />
+    <Compile Include="Entidad\BaseDto.cs" />
+    <Compile Include="Entidad\ComboBoxDto.cs" />
+    <Compile Include="Entidad\CompendioDetalleDto.cs" />
+    <Compile Include="Entidad\CompendioGeneral.cs" />
+    <Compile Include="Entidad\CompendioGeneralBean.cs" />
+    <Compile Include="Entidad\FuenteDatosRq.cs" />
+    <Compile Include="Entidad\FuenteDatosTablaAnalisisRq.cs" />
+    <Compile Include="Entidad\FuenteRelacionRq.cs" />
+    <Compile Include="Entidad\Funcionalidad.cs" />
+    <Compile Include="Entidad\FuncionalidadDto.cs" />
+    <Compile Include="Entidad\FuncionalidadOperacion.cs" />
+    <Compile Include="Entidad\FuncionalidadOperacionDto.cs" />
+    <Compile Include="Entidad\GrtaFuncionalidad.cs" />
+    <Compile Include="Entidad\GRTA_DECLARACIONES_PERFIL.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\GRTA_EVALUACION.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\GRTA_FUNCION_SUJETO.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\GRTA_MEDIDAS.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\GRTA_MENSAJES_SUJETO.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\GRTA_PARAMETROS.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\GRTA_SESSION.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\GRTA_SUJETO_RIESGO.cs" />
+    <Compile Include="Entidad\GRTA_USUARIO.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\GRTA_USUARIO_FUNCIONALIDAD.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\GRTA_USUARIO_FUNC_OPERACION.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\GRTA_USUARIO_PROPIEDAD.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\GRTA_USUARIO_ROL.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\GRTA_VARIABLES.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidad\MedidaConsultaDto.cs" />
+    <Compile Include="Entidad\MedidaRevImpRq.cs" />
+    <Compile Include="Entidad\MgrLoginBean.cs" />
+    <Compile Include="Entidad\ModelMGRContext.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entidad\SujetoRiesgoDto.cs" />
+    <Compile Include="Entidad\SujetoRiesgoRq.cs" />
+    <Compile Include="Entidad\SujetoRiesgoRs.cs" />
+    <Compile Include="Entidad\UsuarioDto.cs" />
+    <Compile Include="Entidad\VW_COMPENDIO_SUJETO.cs">
+      <DependentUpon>ModelMGRContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Entidad\ModelMGRContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelMGRContext.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
