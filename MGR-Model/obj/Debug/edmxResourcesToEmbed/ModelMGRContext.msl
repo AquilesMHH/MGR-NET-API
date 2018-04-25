@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelMGRContext">
+    <EntitySetMapping Name="GRTA_SESSION">
+      <EntityTypeMapping TypeName="Model.GRTA_SESSION">
+        <MappingFragment StoreEntitySet="GRTA_SESSION">
+          <ScalarProperty Name="TOKEN" ColumnName="TOKEN" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="DIRECCION_IP" ColumnName="DIRECCION_IP" />
+          <ScalarProperty Name="CODIGO_USUARIO" ColumnName="CODIGO_USUARIO" />
+          <ScalarProperty Name="ID_SESSION" ColumnName="ID_SESSION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRTA_DECLARACIONES_PERFIL">
+      <EntityTypeMapping TypeName="Model.GRTA_DECLARACIONES_PERFIL">
+        <MappingFragment StoreEntitySet="GRTA_DECLARACIONES_PERFIL">
+          <ScalarProperty Name="SESSION_MOTIVO" ColumnName="SESSION_MOTIVO" />
+          <ScalarProperty Name="FECHA_MOTIVO" ColumnName="FECHA_MOTIVO" />
+          <ScalarProperty Name="DESCRIPCION_MOTIVO" ColumnName="DESCRIPCION_MOTIVO" />
+          <ScalarProperty Name="TIPO_MOTIVO" ColumnName="TIPO_MOTIVO" />
+          <ScalarProperty Name="GRADO_RIESGO" ColumnName="GRADO_RIESGO" />
+          <ScalarProperty Name="PERFIL_RIESGO" ColumnName="PERFIL_RIESGO" />
+          <ScalarProperty Name="TOTAL_LINEAS" ColumnName="TOTAL_LINEAS" />
+          <ScalarProperty Name="FECHA_REGISTRO_IDX" ColumnName="FECHA_REGISTRO_IDX" />
+          <ScalarProperty Name="CLASE_MEDIDA" ColumnName="CLASE_MEDIDA" />
+          <ScalarProperty Name="FECHA_DECLARACION" ColumnName="FECHA_DECLARACION" />
+          <ScalarProperty Name="INDICADOR_SELECCION" ColumnName="INDICADOR_SELECCION" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="FECHA_TERMINO" ColumnName="FECHA_TERMINO" />
+          <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+          <ScalarProperty Name="SELECCION_CASOS" ColumnName="SELECCION_CASOS" />
+          <ScalarProperty Name="INDICADOR_ACTIVO" ColumnName="INDICADOR_ACTIVO" />
+          <ScalarProperty Name="TIPO_MOMENTO" ColumnName="TIPO_MOMENTO" />
+          <ScalarProperty Name="TIPO_REQUERIMIENTO" ColumnName="TIPO_REQUERIMIENTO" />
+          <ScalarProperty Name="IDENTIFICADOR_DECLARACION" ColumnName="IDENTIFICADOR_DECLARACION" />
+          <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+          <ScalarProperty Name="ID_PERFIL" ColumnName="ID_PERFIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRTA_EVALUACION">
+      <EntityTypeMapping TypeName="Model.GRTA_EVALUACION">
+        <MappingFragment StoreEntitySet="GRTA_EVALUACION">
+          <ScalarProperty Name="CLASE_MEDIDA" ColumnName="CLASE_MEDIDA" />
+          <ScalarProperty Name="TOTAL_DOCUMENTOS" ColumnName="TOTAL_DOCUMENTOS" />
+          <ScalarProperty Name="FECHA_FIN_ANALISIS" ColumnName="FECHA_FIN_ANALISIS" />
+          <ScalarProperty Name="FECHA_INICIO_ANALISIS" ColumnName="FECHA_INICIO_ANALISIS" />
+          <ScalarProperty Name="ESTADO_EVALUACION" ColumnName="ESTADO_EVALUACION" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+          <ScalarProperty Name="ID_EVALUACION" ColumnName="ID_EVALUACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRTA_FUNCION_SUJETO">
+      <EntityTypeMapping TypeName="Model.GRTA_FUNCION_SUJETO">
+        <MappingFragment StoreEntitySet="GRTA_FUNCION_SUJETO">
+          <ScalarProperty Name="SESSION_REGISTRO" ColumnName="SESSION_REGISTRO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="FECHA_FIN_VIGENCIA" ColumnName="FECHA_FIN_VIGENCIA" />
+          <ScalarProperty Name="FECHA_INICIO_VIGENCIA" ColumnName="FECHA_INICIO_VIGENCIA" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="FUNCION_PRODUCCION" ColumnName="FUNCION_PRODUCCION" />
+          <ScalarProperty Name="FUNCION_ANALISIS" ColumnName="FUNCION_ANALISIS" />
+          <ScalarProperty Name="TIPO_FUNCION" ColumnName="TIPO_FUNCION" />
+          <ScalarProperty Name="TIPO_MEDIDA" ColumnName="TIPO_MEDIDA" />
+          <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRTA_MEDIDAS">
+      <EntityTypeMapping TypeName="Model.GRTA_MEDIDAS">
+        <MappingFragment StoreEntitySet="GRTA_MEDIDAS">
+          <ScalarProperty Name="FLAG_REPLICACION" ColumnName="FLAG_REPLICACION" />
+          <ScalarProperty Name="FUNCION_ACTIVACION" ColumnName="FUNCION_ACTIVACION" />
+          <ScalarProperty Name="SESSION_REGISTRO" ColumnName="SESSION_REGISTRO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="VERSION_PRECEDENTE" ColumnName="VERSION_PRECEDENTE" />
+          <ScalarProperty Name="MEDIDA_PRECEDENTE" ColumnName="MEDIDA_PRECEDENTE" />
+          <ScalarProperty Name="TERMINO_MOMENTO" ColumnName="TERMINO_MOMENTO" />
+          <ScalarProperty Name="RITMO_APRENDIZAJE" ColumnName="RITMO_APRENDIZAJE" />
+          <ScalarProperty Name="TIPO_FRECUENCIA" ColumnName="TIPO_FRECUENCIA" />
+          <ScalarProperty Name="VALOR_FRECUENCIA" ColumnName="VALOR_FRECUENCIA" />
+          <ScalarProperty Name="FECHA_FIN_ANALISIS" ColumnName="FECHA_FIN_ANALISIS" />
+          <ScalarProperty Name="FECHA_INICIO_ANALISIS" ColumnName="FECHA_INICIO_ANALISIS" />
+          <ScalarProperty Name="FECHA_FIN_VIGENCIA" ColumnName="FECHA_FIN_VIGENCIA" />
+          <ScalarProperty Name="FECHA_INICIO_VIGENCIA" ColumnName="FECHA_INICIO_VIGENCIA" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="NOMBRE_MEDIDA" ColumnName="NOMBRE_MEDIDA" />
+          <ScalarProperty Name="JERARQUIA_MEDIDA" ColumnName="JERARQUIA_MEDIDA" />
+          <ScalarProperty Name="ESTADO_MEDIDA" ColumnName="ESTADO_MEDIDA" />
+          <ScalarProperty Name="ID_POLITICA" ColumnName="ID_POLITICA" />
+          <ScalarProperty Name="CLASE_MEDIDA" ColumnName="CLASE_MEDIDA" />
+          <ScalarProperty Name="TIPO_MEDIDA" ColumnName="TIPO_MEDIDA" />
+          <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+          <ScalarProperty Name="VERSION_MEDIDA" ColumnName="VERSION_MEDIDA" />
+          <ScalarProperty Name="ID_MEDIDA" ColumnName="ID_MEDIDA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRTA_MENSAJES_SUJETO">
+      <EntityTypeMapping TypeName="Model.GRTA_MENSAJES_SUJETO">
+        <MappingFragment StoreEntitySet="GRTA_MENSAJES_SUJETO">
+          <ScalarProperty Name="INDICADOR_PROCESO" ColumnName="INDICADOR_PROCESO" />
+          <ScalarProperty Name="IDENTIFICADOR_DECLARACION" ColumnName="IDENTIFICADOR_DECLARACION" />
+          <ScalarProperty Name="CONDICION_MEDIDAS" ColumnName="CONDICION_MEDIDAS" />
+          <ScalarProperty Name="VERSION_MEDIDA" ColumnName="VERSION_MEDIDA" />
+          <ScalarProperty Name="ID_MEDIDA" ColumnName="ID_MEDIDA" />
+          <ScalarProperty Name="ID_PERFIL" ColumnName="ID_PERFIL" />
+          <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+          <ScalarProperty Name="ID_MENSAJE_SUJETO" ColumnName="ID_MENSAJE_SUJETO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRTA_PARAMETROS">
+      <EntityTypeMapping TypeName="Model.GRTA_PARAMETROS">
+        <MappingFragment StoreEntitySet="GRTA_PARAMETROS">
+          <ScalarProperty Name="SESSION_REGISTRO" ColumnName="SESSION_REGISTRO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="FECHA_FIN_VIGENCIA" ColumnName="FECHA_FIN_VIGENCIA" />
+          <ScalarProperty Name="FECHA_INICIO_VIGENCIA" ColumnName="FECHA_INICIO_VIGENCIA" />
+          <ScalarProperty Name="TIPO_DATO" ColumnName="TIPO_DATO" />
+          <ScalarProperty Name="DESCRIPCION_BREVE" ColumnName="DESCRIPCION_BREVE" />
+          <ScalarProperty Name="VALOR_IDENTIFICACION_SUJETO" ColumnName="VALOR_IDENTIFICACION_SUJETO" />
+          <ScalarProperty Name="VALOR_CODIGO_VARIABLE" ColumnName="VALOR_CODIGO_VARIABLE" />
+          <ScalarProperty Name="VALOR_SUMINISTRADO" ColumnName="VALOR_SUMINISTRADO" />
+          <ScalarProperty Name="CLASE_PARAMETRO" ColumnName="CLASE_PARAMETRO" />
+          <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+          <ScalarProperty Name="ID_PARAMETRO" ColumnName="ID_PARAMETRO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRTA_VARIABLES">
+      <EntityTypeMapping TypeName="Model.GRTA_VARIABLES">
+        <MappingFragment StoreEntitySet="GRTA_VARIABLES">
+          <ScalarProperty Name="CLASIFICACION_DATA" ColumnName="CLASIFICACION_DATA" />
+          <ScalarProperty Name="SESSION_REGISTRO" ColumnName="SESSION_REGISTRO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="VARIABLE_CATALOGO" ColumnName="VARIABLE_CATALOGO" />
+          <ScalarProperty Name="QUERY_AUTOGENERADO" ColumnName="QUERY_AUTOGENERADO" />
+          <ScalarProperty Name="FECHA_INICIO_VIGENCIA" ColumnName="FECHA_INICIO_VIGENCIA" />
+          <ScalarProperty Name="FECHA_FIN_VIGENCIA" ColumnName="FECHA_FIN_VIGENCIA" />
+          <ScalarProperty Name="TABLA_CODIFICACION" ColumnName="TABLA_CODIFICACION" />
+          <ScalarProperty Name="INDICADOR_PRESENCIA" ColumnName="INDICADOR_PRESENCIA" />
+          <ScalarProperty Name="MODO_OBTENCION" ColumnName="MODO_OBTENCION" />
+          <ScalarProperty Name="NUMERO_OCURRENCIAS" ColumnName="NUMERO_OCURRENCIAS" />
+          <ScalarProperty Name="MODO_USO" ColumnName="MODO_USO" />
+          <ScalarProperty Name="TIPO_DATO" ColumnName="TIPO_DATO" />
+          <ScalarProperty Name="EXPRESION_CONSOLIDACION" ColumnName="EXPRESION_CONSOLIDACION" />
+          <ScalarProperty Name="TABLA_CONSOLIDACION" ColumnName="TABLA_CONSOLIDACION" />
+          <ScalarProperty Name="EXPRESION_TRANSACCIONAL" ColumnName="EXPRESION_TRANSACCIONAL" />
+          <ScalarProperty Name="TABLA_TRANSACCIONAL" ColumnName="TABLA_TRANSACCIONAL" />
+          <ScalarProperty Name="TIPO_VARIABLE" ColumnName="TIPO_VARIABLE" />
+          <ScalarProperty Name="DESCRIPCION_COMPLETA" ColumnName="DESCRIPCION_COMPLETA" />
+          <ScalarProperty Name="DESCRIPCION_BREVE" ColumnName="DESCRIPCION_BREVE" />
+          <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+          <ScalarProperty Name="CODIGO_VARIABLE" ColumnName="CODIGO_VARIABLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_COMPENDIO_SUJETO">
+      <EntityTypeMapping TypeName="Model.VW_COMPENDIO_SUJETO">
+        <MappingFragment StoreEntitySet="VW_COMPENDIO_SUJETO">
+          <ScalarProperty Name="ID_PARAMETRO" ColumnName="ID_PARAMETRO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION_BREVE" ColumnName="DESCRIPCION_BREVE" />
+          <ScalarProperty Name="FECHA_FIN_VIGENCIA" ColumnName="FECHA_FIN_VIGENCIA" />
+          <ScalarProperty Name="FECHA_INICIO_VIGENCIA" ColumnName="FECHA_INICIO_VIGENCIA" />
+          <ScalarProperty Name="TIPO_TABLA" ColumnName="TIPO_TABLA" />
+          <ScalarProperty Name="ORIGEN_FUENTE" ColumnName="ORIGEN_FUENTE" />
+          <ScalarProperty Name="CODIGO_ALTERNO" ColumnName="CODIGO_ALTERNO" />
+          <ScalarProperty Name="NOMBRE_TABLA" ColumnName="NOMBRE_TABLA" />
+          <ScalarProperty Name="SUJETO_RIESGO" ColumnName="SUJETO_RIESGO" />
+          <ScalarProperty Name="TABLAS_SUJETO" ColumnName="TABLAS_SUJETO" />
+          <ScalarProperty Name="FECHAS" ColumnName="FECHAS" />
+          <ScalarProperty Name="TIP_TABLA" ColumnName="TIP_TABLA" />
+          <ScalarProperty Name="ORIG_FUENTE" ColumnName="ORIG_FUENTE" />
+          <ScalarProperty Name="TABLA_" ColumnName="TABLA_" />
+          <ScalarProperty Name="NOMBRE_SUJETO" ColumnName="NOMBRE_SUJETO" />
+          <ScalarProperty Name="COD_" ColumnName="COD_" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRTA_USUARIO_FUNC_OPERACION">
+      <EntityTypeMapping TypeName="Model.GRTA_USUARIO_FUNC_OPERACION">
+        <MappingFragment StoreEntitySet="GRTA_USUARIO_FUNC_OPERACION">
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="FECHA_ELIMINACION" ColumnName="FECHA_ELIMINACION" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="ID_OPERACION" ColumnName="ID_OPERACION" />
+          <ScalarProperty Name="ID_FUNCIONALIDAD" ColumnName="ID_FUNCIONALIDAD" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRTA_USUARIO_FUNCIONALIDAD">
+      <EntityTypeMapping TypeName="Model.GRTA_USUARIO_FUNCIONALIDAD">
+        <MappingFragment StoreEntitySet="GRTA_USUARIO_FUNCIONALIDAD">
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="FECHA_ELIMINACION" ColumnName="FECHA_ELIMINACION" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="ID_FUNCIONALIDAD" ColumnName="ID_FUNCIONALIDAD" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRTA_USUARIO_PROPIEDAD">
+      <EntityTypeMapping TypeName="Model.GRTA_USUARIO_PROPIEDAD">
+        <MappingFragment StoreEntitySet="GRTA_USUARIO_PROPIEDAD">
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+          <ScalarProperty Name="ID_PROPIEDAD" ColumnName="ID_PROPIEDAD" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRTA_USUARIO_ROL">
+      <EntityTypeMapping TypeName="Model.GRTA_USUARIO_ROL">
+        <MappingFragment StoreEntitySet="GRTA_USUARIO_ROL">
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="FECHA_ELIMINACION" ColumnName="FECHA_ELIMINACION" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRTA_USUARIO">
+      <EntityTypeMapping TypeName="Model.GRTA_USUARIO">
+        <MappingFragment StoreEntitySet="GRTA_USUARIO">
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="FECHA_ELIMINACION" ColumnName="FECHA_ELIMINACION" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="VIGENCIA_CLAVE" ColumnName="VIGENCIA_CLAVE" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIO_ADMINISTRADOR" ColumnName="USUARIO_ADMINISTRADOR" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SEGUNDO_APELLIDO" ColumnName="SEGUNDO_APELLIDO" />
+          <ScalarProperty Name="PRIMER_APELLIDO" ColumnName="PRIMER_APELLIDO" />
+          <ScalarProperty Name="SEGUNDO_NOMBRE" ColumnName="SEGUNDO_NOMBRE" />
+          <ScalarProperty Name="PRIMER_NOMBRE" ColumnName="PRIMER_NOMBRE" />
+          <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

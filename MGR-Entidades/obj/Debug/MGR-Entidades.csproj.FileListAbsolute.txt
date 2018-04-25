@@ -1,5 +1,4 @@
-E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Entidades\bin\Debug\MGR-Entidades.dll
-E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Entidades\bin\Debug\MGR-Entidades.pdb
-E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Entidades\obj\Debug\MGR-Entidades.csprojResolveAssemblyReference.cache
-E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Entidades\obj\Debug\MGR-Entidades.dll
-E:\00-Temporal\02-Produccion\Net\Camacho\MGR-FUENTES\MGR-WebApi\MGR-Entidades\obj\Debug\MGR-Entidades.pdb
+E:\00-Temporal\02-Produccion\Net\Camacho\__GitHup-Net-Salud\MGR-NET-API\MGR-Entidades\bin\Debug\MGR-Entidades.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\__GitHup-Net-Salud\MGR-NET-API\MGR-Entidades\bin\Debug\MGR-Entidades.pdb
+E:\00-Temporal\02-Produccion\Net\Camacho\__GitHup-Net-Salud\MGR-NET-API\MGR-Entidades\obj\Debug\MGR-Entidades.dll
+E:\00-Temporal\02-Produccion\Net\Camacho\__GitHup-Net-Salud\MGR-NET-API\MGR-Entidades\obj\Debug\MGR-Entidades.pdb
