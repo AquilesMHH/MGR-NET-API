@@ -12,5 +12,6 @@ namespace MGR_Business.com.pe.mgr.service
     {
         List<ComboBoxDto> listarCompendioDetalleCatalogoComboReferencia(int id_compendio);
         List<ComboBoxDto> listarCompendioDetalleCatalogoCombo(int id_compendio);
+        List<ComboBoxDto> listarCategoriaVocabularioNegocioCombo(int sujeto_riesgo);
     }
 }

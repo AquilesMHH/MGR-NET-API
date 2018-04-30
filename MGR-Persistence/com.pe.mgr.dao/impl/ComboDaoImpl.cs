@@ -78,5 +78,76 @@ namespace MGR_Persistence.com.pe.mgr.dao.impl
             }
 
         }
+
+        public List<ComboBoxDto> listarCategoriaVocabularioNegocioCombo(int sujeto_riesgo)
+        {
+            using (var dbContextTransaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    List<ComboBoxDto> objLista = new List<ComboBoxDto>();
+                    DataSet dataSet = MGR_Common.OracleHelper.Query(conn, MgrEnumConsultaGeneral.MgrCategoriaCategoriaVocabularioNegocioCombo(sujeto_riesgo), System.Data.CommandType.Text, null);
+                    if (dataSet != null)
+                    {
+                        objLista = dataSet.Tables[0].DataTableToList<ComboBoxDto>();
+                        return objLista;
+                    }
+                }
+                catch (Exception ext)
+                {
+                 
+                    string valor = ext.ToString();
+                    dbContextTransaction.Rollback();
+                }
+                return null;
+            }
+        }
+
+        public List<ComboBoxDto> listarCategoriaParametrosCombo(int sujeto_riesgo)
+        {
+            using (var dbContextTransaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    List<ComboBoxDto> objLista = new List<ComboBoxDto>();
+                    DataSet dataSet = MGR_Common.OracleHelper.Query(conn, MgrEnumConsultaGeneral.MgrCategoriaParametrosCombo(sujeto_riesgo), System.Data.CommandType.Text, null);
+                    if (dataSet != null)
+                    {
+                        objLista = dataSet.Tables[0].DataTableToList<ComboBoxDto>();
+                        return objLista;
+                    }
+                }
+                catch (Exception ext)
+                {
+
+                    string valor = ext.ToString();
+                    dbContextTransaction.Rollback();
+                }
+                return null;
+            }
+        }
+        public List<ComboBoxDto> listarCategoriaSimbolosCombo(int sujeto_riesgo)
+        {
+            using (var dbContextTransaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    List<ComboBoxDto> objLista = new List<ComboBoxDto>();
+                    DataSet dataSet = MGR_Common.OracleHelper.Query(conn, MgrEnumConsultaGeneral.MgrCategoriaSimbolosCombo(sujeto_riesgo), System.Data.CommandType.Text, null);
+                    if (dataSet != null)
+                    {
+                        objLista = dataSet.Tables[0].DataTableToList<ComboBoxDto>();
+                        return objLista;
+                    }
+                }
+                catch (Exception ext)
+                {
+
+                    string valor = ext.ToString();
+                    dbContextTransaction.Rollback();
+                }
+                return null;
+            }
+        }
     }
 }

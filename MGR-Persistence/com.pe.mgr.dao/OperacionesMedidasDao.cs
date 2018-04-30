@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace MGR_Persistence.com.pe.mgr.dao
 {
-    public interface MedidasDao : IDisposable
+    public interface OperacionesMedidasDao
     {
-        string mplementarMedidaMultipleDao(String metodo, int idSession,  List<MedidaRevImpRq> lstMedidaRevImpRq);
-
-
-
+        int saveOrUpdate(OperacionesMedidas operaciones_medidas, bool grabar);
     }
-
 }

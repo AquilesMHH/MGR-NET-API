@@ -20,6 +20,11 @@ namespace MGR_Business.com.pe.mgr.service.impl
             throw new NotImplementedException();
         }
 
+        public List<ComboBoxDto> listarCategoriaVocabularioNegocioCombo(int sujeto_riesgo)
+        {
+            return _comboDaoImpl.listarCategoriaVocabularioNegocioCombo(sujeto_riesgo);
+        }
+
         public List<ComboBoxDto> listarCompendioDetalleCatalogoCombo(int id_compendio)
         {
             return _comboDaoImpl.listarCompendioDetalleCatalogoCombo(id_compendio);
@@ -29,6 +34,11 @@ namespace MGR_Business.com.pe.mgr.service.impl
         {
             return _comboDaoImpl.listarCompendioDetalleCatalogoComboReferencia(id_compendio);
         }
+        public List<ComboBoxDto> listarCategoriaSimbolosCombo(int id_compendio)
+        {
+            return _comboDaoImpl.listarCategoriaSimbolosCombo(id_compendio);
+        }
 
+        
     }
 }

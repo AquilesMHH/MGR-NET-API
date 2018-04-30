@@ -23,11 +23,27 @@ namespace MGR_WebApi.Controllers
         {
             return _comboServiceImpl.listarCompendioDetalleCatalogoComboReferencia(id_compendio);
         }
+       
         [Route("compendioDetalle", Name = "Common Detalle ")]
         [HttpGet]
         public List<ComboBoxDto> listarCompendioDetalleCatalogoCombo([FromUri] int id_compendio)
         {
             return _comboServiceImpl.listarCompendioDetalleCatalogoCombo(id_compendio);
         }
+
+        [Route("categoriavocabularionegocio", Name = "Common categoriavocabularionegocio ")]
+        [HttpGet]
+        public List<ComboBoxDto> listarCategoriaVocabularioNegocioCombo([FromUri] int sujeto_riesgo)
+        {
+            return  _comboServiceImpl.listarCategoriaVocabularioNegocioCombo(sujeto_riesgo);
+        }
+
+        [Route("categoriasimbolos", Name = "Common categoriasimbolos ")]
+        [HttpGet]
+        public List<ComboBoxDto> listarCategoriaSimbolosCombo([FromUri] int sujeto_riesgo)
+        {
+            return _comboServiceImpl.listarCategoriaSimbolosCombo(sujeto_riesgo);
+        }
+
     }
 }

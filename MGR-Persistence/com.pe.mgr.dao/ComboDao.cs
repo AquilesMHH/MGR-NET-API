@@ -12,6 +12,9 @@ namespace MGR_Persistence.com.pe.mgr.dao
     {
         List<ComboBoxDto> listarCompendioDetalleCatalogoComboReferencia(int id_compendio) ;
         List<ComboBoxDto> listarCompendioDetalleCatalogoCombo(int id_compendio);
+        List<ComboBoxDto> listarCategoriaVocabularioNegocioCombo(int sujeto_riesgo);
+        List<ComboBoxDto> listarCategoriaParametrosCombo(int sujeto_riesgo);
         
+
     }
 }
