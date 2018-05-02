@@ -622,5 +622,21 @@ namespace MGR_Persistence.com.pe.mgr.dao.impl
             return null;
             
         }
+
+        public string consultarAutoComplete(string metodo, string termino, int sujetoRiesgo, int tipoMedida)
+        {
+            try
+            {
+
+                return "";
+            }
+            catch (Exception ext)
+            {
+                string valor = ext.ToString();
+                throw new MgrServiceException(ErrorCodeConstant.SERV_PARAMETROS_INCORRECTOS, "Parametro invalido para el metodo");
+                return "";
+            }
+            
+        }
     }    
 }

@@ -298,5 +298,10 @@ namespace MGR_Business.com.pe.mgr.service.impl
         {
             return _medidaDaoImpl.consultarDescripcionMedPrec(sujetoRiesgo, tipoMedida, idMedida, versionMedida);
         }
+
+        public List<ComboBoxDto> consultarAutoComplete(string metodo, string termino, int sujetoRiesgo, int tipoMedida)
+        {
+            return _medidaDaoImpl.consultarAutoComplete(metodo, termino, sujetoRiesgo, tipoMedida);
+        }
     }
 }

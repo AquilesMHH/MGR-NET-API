@@ -87,6 +87,19 @@ namespace MGR_WebApi.Controllers
         {
             return _medidasServiceImpl.consultarDescripcionMedPrec(sujetoRiesgo, tipoMedida, idMedida, versionMedida);
         }
+        [Route("autoComplete/destinatario", Name = "Vario destinatario")]
+        [HttpGet]
+        public List<ComboBoxDto> consultarAutoCompleteDatos(String termino)
+        {   return _medidasServiceImpl.consultarAutoComplete("destinatario", termino, 0, 0);
+        }
+        [Route("guardarmedidadao", Name = "Vario guardarmedidadao")]
+        [HttpPost]
+        public String guardarMedidaDao(MedidaRq medidaRq)
+        {
+            // return _medidasServiceImpl.guardarRetenerMedidaDao(sujetoRiesgo, tipoMedida, idMedida, versionMedida);
+            return "";
+        }
          
+
     }
 }
