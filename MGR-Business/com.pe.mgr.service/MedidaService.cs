@@ -24,6 +24,7 @@ namespace MGR_Business.com.pe.mgr.service
         List<ComboBoxDto> obtenerMedidaPorTipo(int tipo_medida, int sujeto_riesgo);
         String consultarDescripcionMedPrec(int sujetoRiesgo, int tipoMedida, int idMedida, int versionMedida);
         List<ComboBoxDto> consultarAutoComplete(String metodo, String termino, int sujetoRiesgo, int tipoMedida);
+        string guardarRetenerMedidaDao(string metodo, int idSession, MedidaRq medidaRq);
 
     }
 }

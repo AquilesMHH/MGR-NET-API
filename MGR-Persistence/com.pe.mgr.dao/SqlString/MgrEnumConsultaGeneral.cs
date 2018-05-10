@@ -43,6 +43,19 @@ namespace MGR_Persistence.com.pe.mgr.dao.SqlString
             return @"SELECT ID_DETALLE CODIGO, NOMBRE DESCRIPCION FROM GRTA_COMPENDIO_DETALLE WHERE ID_COMPENDIO=3 AND SUJETO_RIESGO=TO_NUMBER( " + sujeto_riesgo + ") AND CODIGO_ALTERNO IS NOT NULL AND" +
                  " SYSDATE BETWEEN FECHA_INICIO_VIGENCIA AND DECODE(FECHA_FIN_VIGENCIA,'',SYSDATE)";
         }
+        public static String MgrConsultarMedidasPrecedentesAutoComplete(int pSujetoRiesgo, int pTipoMedida, string pNombreMedida)
+        {
+            return @"SELECT ID_MEDIDA||'-'||VERSION_MEDIDA CODIGO, NOMBRE_MEDIDA DESCRIPCION FROM GRTA_MEDIDAS" +
+                                                " WHERE UPPER(NOMBRE_MEDIDA) LIKE UPPER('%' ||'" + pNombreMedida + "' || '%')" +
+                                                " AND SUJETO_RIESGO=TO_NUMBER(" + pSujetoRiesgo + ") AND TIPO_MEDIDA=TO_NUMBER(" + pTipoMedida + ") AND ESTADO_MEDIDA=42";
+        }
+        public static String MgrConsultarDestinatarioAutoComplete(int pSujetoRiesgo, int pTipoMedida, string pParametro)
+        {
+            return @"SELECT ID_DETALLE CODIGO, DESCRIPCION||' ('||NOMBRE||')' DESCRIPCION FROM GRTA_COMPENDIO_DETALLE" +
+                                            " WHERE ( UPPER(DESCRIPCION) LIKE UPPER('%'||'" + pParametro + "'||'%') OR UPPER(NOMBRE) LIKE UPPER('%'||'" + pParametro + "'||'%') ) AND" +
+                                            " ID_COMPENDIO=63 AND SYSDATE BETWEEN FECHA_INICIO_VIGENCIA AND DECODE(FECHA_FIN_VIGENCIA,'',SYSDATE)";
+        }
+
         public static String MgrConsultarDescripcionMedidaPrecedente(string pIdMedidaVersion,int pSujetoRiesgo, int pTipoMedida)
         {
             return @"SELECT NOMBRE_MEDIDA nombre_medida FROM GRTA_MEDIDAS WHERE  ID_MEDIDA||'-'||VERSION_MEDIDA = '" + pIdMedidaVersion + "' " +
@@ -55,7 +68,13 @@ namespace MGR_Persistence.com.pe.mgr.dao.SqlString
                 "FROM GRTA_VARIABLES \n" +
                 "WHERE CODIGO_VARIABLE=TO_NUMBER(" + variable + ")\n ";
         }
- 
+        public static String MgrVariableFiltroCombo(int id_Sujeto)
+        {
+            return @"SELECT CODIGO_VARIABLE, UPPER(DESCRIPCION_BREVE) DESCRIPCION_BREVE FROM GRTA_VARIABLES\n" +
+                            " WHERE SUJETO_RIESGO = TO_NUMBER(" + id_Sujeto + ") AND TIPO_VARIABLE =57 AND\n" +
+                            " SYSDATE BETWEEN FECHA_INICIO_VIGENCIA AND DECODE(FECHA_FIN_VIGENCIA,'',SYSDATE) AND EXPRESION_TRANSACCIONAL NOT LIKE '%NO DEFINIDO%'\n";
+        }
+
         public static String MgrCompendioDetalleComboReferencia(int id_compendio)
         {
             return @"SELECT ID_DETALLE CODIGO, NOMBRE  DESCRIPCION FROM GRTA_COMPENDIO_DETALLE\n" +
@@ -72,10 +91,10 @@ namespace MGR_Persistence.com.pe.mgr.dao.SqlString
             return @"SELECT ID_DETALLE CODIGO, DESCRIPCION  FROM GRTA_COMPENDIO_DETALLE WHERE ID_COMPENDIO=100 AND SUJETO_RIESGO=TO_NUMBER(" + sujeto_riesgo + ") AND" +
                                         " SYSDATE BETWEEN FECHA_INICIO_VIGENCIA AND DECODE(FECHA_FIN_VIGENCIA,'',SYSDATE)";
         }
-        public static String MgrCompendioDetalleCombo(int sujeto_riesgo)
+        public static String MgrCompendioDetalleCombo(int id_compendio)
         {
             return @"SELECT ID_DETALLE CODIGO, NOMBRE DESCRIPCION  FROM GRTA_COMPENDIO_DETALLE\n" +
-            " WHERE ID_COMPENDIO=:id_compendio AND  \n" +
+            " WHERE ID_COMPENDIO=" + id_compendio + " AND  \n" +
             " SYSDATE BETWEEN FECHA_INICIO_VIGENCIA AND DECODE(FECHA_FIN_VIGENCIA, '', SYSDATE)";
         }
         public static String MgrUnidadMedicionCombo(int id_grupo)

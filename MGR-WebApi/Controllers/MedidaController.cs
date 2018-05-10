@@ -96,8 +96,10 @@ namespace MGR_WebApi.Controllers
         [HttpPost]
         public String guardarMedidaDao(MedidaRq medidaRq)
         {
-            // return _medidasServiceImpl.guardarRetenerMedidaDao(sujetoRiesgo, tipoMedida, idMedida, versionMedida);
-            return "";
+            int idSession = 0;
+            
+            return _medidasServiceImpl.guardarRetenerMedidaDao("guardar", idSession, medidaRq);
+           
         }
          
 

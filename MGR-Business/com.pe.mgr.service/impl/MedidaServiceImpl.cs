@@ -303,5 +303,10 @@ namespace MGR_Business.com.pe.mgr.service.impl
         {
             return _medidaDaoImpl.consultarAutoComplete(metodo, termino, sujetoRiesgo, tipoMedida);
         }
+
+        public string guardarRetenerMedidaDao(string metodo, int idSession, MedidaRq medidaRq)
+        {
+            return _medidaDaoImpl.guardarRetenerMedidaDao(metodo, idSession, medidaRq);
+        }
     }
 }

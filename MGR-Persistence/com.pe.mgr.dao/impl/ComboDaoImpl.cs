@@ -27,7 +27,7 @@ namespace MGR_Persistence.com.pe.mgr.dao.impl
             throw new NotImplementedException();
         }
 
-        public List<ComboBoxDto> listarCompendioDetalleCatalogoComboReferencia(int id_compendio)
+        public List<ComboBoxDto> ListarCompendioDetalleCatalogoComboReferencia(int id_compendio)
         {
            using (var dbContextTransaction = context.Database.BeginTransaction())
             {
@@ -36,7 +36,7 @@ namespace MGR_Persistence.com.pe.mgr.dao.impl
                     List<ComboBoxDto> objLista = new List<ComboBoxDto>();
                     OracleParameter[] parameters = new OracleParameter[] {
                                  new OracleParameter("@id_compendio", id_compendio) };
-                    DataSet dataSet = MGR_Common.OracleHelper.Query(conn, MgrEnumConsultaGeneral.MgrCompendioDetalleComboReferencia , System.Data.CommandType.Text, parameters);
+                    DataSet dataSet = MGR_Common.OracleHelper.Query(conn, MgrEnumConsultaGeneral.MgrCompendioDetalleComboReferencia(id_compendio), System.Data.CommandType.Text, parameters);
                     if (dataSet != null)
                     {
                         objLista = dataSet.Tables[0].DataTableToList<ComboBoxDto>();
@@ -62,7 +62,7 @@ namespace MGR_Persistence.com.pe.mgr.dao.impl
                     List<ComboBoxDto> objLista = new List<ComboBoxDto>();
                     OracleParameter[] parameters = new OracleParameter[] {
                                  new OracleParameter("@id_compendio", id_compendio) };
-                    DataSet dataSet = MGR_Common.OracleHelper.Query(conn, MgrEnumConsultaGeneral.MgrCompendioDetalleCombo, System.Data.CommandType.Text, parameters);
+                    DataSet dataSet = MGR_Common.OracleHelper.Query(conn, MgrEnumConsultaGeneral.MgrCompendioDetalleCombo(id_compendio), System.Data.CommandType.Text, parameters);
                     if (dataSet != null)
                     {
                         objLista = dataSet.Tables[0].DataTableToList<ComboBoxDto>();
@@ -134,6 +134,30 @@ namespace MGR_Persistence.com.pe.mgr.dao.impl
                 {
                     List<ComboBoxDto> objLista = new List<ComboBoxDto>();
                     DataSet dataSet = MGR_Common.OracleHelper.Query(conn, MgrEnumConsultaGeneral.MgrCategoriaSimbolosCombo(sujeto_riesgo), System.Data.CommandType.Text, null);
+                    if (dataSet != null)
+                    {
+                        objLista = dataSet.Tables[0].DataTableToList<ComboBoxDto>();
+                        return objLista;
+                    }
+                }
+                catch (Exception ext)
+                {
+
+                    string valor = ext.ToString();
+                    dbContextTransaction.Rollback();
+                }
+                return null;
+            }
+        }
+
+        public List<ComboBoxDto> listarFiltroCombo(int sujeto_riesgo)
+        {
+            using (var dbContextTransaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    List<ComboBoxDto> objLista = new List<ComboBoxDto>();
+                    DataSet dataSet = MGR_Common.OracleHelper.Query(conn, MgrEnumConsultaGeneral.MgrVariableFiltroCombo(sujeto_riesgo), System.Data.CommandType.Text, null);
                     if (dataSet != null)
                     {
                         objLista = dataSet.Tables[0].DataTableToList<ComboBoxDto>();

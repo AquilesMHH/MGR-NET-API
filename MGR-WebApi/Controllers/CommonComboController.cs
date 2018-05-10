@@ -45,5 +45,15 @@ namespace MGR_WebApi.Controllers
             return _comboServiceImpl.listarCategoriaSimbolosCombo(sujeto_riesgo);
         }
 
+        [Route("variableFiltro", Name = "Common variableFiltro ")]
+        [HttpGet]
+        public List<ComboBoxDto> listarVariableFiltro([FromUri] int sujeto_riesgo)
+        {
+            return _comboServiceImpl.listarFiltroCombo(sujeto_riesgo);
+        }
+
+           
+
+
     }
 }

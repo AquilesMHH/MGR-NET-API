@@ -32,13 +32,16 @@ namespace MGR_Business.com.pe.mgr.service.impl
 
         public List<ComboBoxDto> listarCompendioDetalleCatalogoComboReferencia(int id_compendio)
         {
-            return _comboDaoImpl.listarCompendioDetalleCatalogoComboReferencia(id_compendio);
+            return _comboDaoImpl.ListarCompendioDetalleCatalogoComboReferencia(id_compendio);
         }
         public List<ComboBoxDto> listarCategoriaSimbolosCombo(int id_compendio)
         {
             return _comboDaoImpl.listarCategoriaSimbolosCombo(id_compendio);
         }
 
-        
+        public List<ComboBoxDto> listarFiltroCombo(int id_compendio)
+        {
+            return _comboDaoImpl.listarFiltroCombo(id_compendio);
+        }
     }
 }
