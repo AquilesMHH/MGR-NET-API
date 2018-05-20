@@ -97,11 +97,22 @@ namespace MGR_WebApi.Controllers
         public String guardarMedidaDao(MedidaRq medidaRq)
         {
             int idSession = 0;
-            
             return _medidasServiceImpl.guardarRetenerMedidaDao("guardar", idSession, medidaRq);
-           
         }
-         
+        [Route("implementarmedidadao", Name = "Vario implementarmedidadao")]
+        [HttpPost]
+        public String implementarMedidaDao(MedidaRq medidaRq)
+        {
+            int idSession = 0;
+            return _medidasServiceImpl.guardarRetenerMedidaDao("implementar", idSession, medidaRq);
+        }
 
+        [Route("devolvermedidadao", Name = "Vario devolvermedidadao")]
+        [HttpPost]
+        public String devolvermedidadao(int id_medida, int version_medida, int estado, string comentarios)
+        {
+            int idSession = 0;
+            return _medidasServiceImpl.devolverMedidaDao( id_medida,  version_medida,  estado,  comentarios,idSession);
+        }
     }
 }

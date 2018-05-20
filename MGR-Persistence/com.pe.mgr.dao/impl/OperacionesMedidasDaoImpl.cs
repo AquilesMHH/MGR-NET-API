@@ -61,18 +61,15 @@ namespace MGR_Persistence.com.pe.mgr.dao.impl
                                + "" + operaciones_medidas.FECHA_OPERACION + "" + ")";
                     }
                     MGR_Common.OracleHelper.ExecuteNonQuery(conn, System.Data.CommandType.Text, sql, null);
-
                 }
                 catch (Exception ext)
                 {
-                    string valor = ext.ToString();
-                    dbContextTransaction.Rollback();
+                  string valor = ext.ToString();
+                  dbContextTransaction.Rollback();
                 }
-
             }
-             
-                return ouputValue;
-            }
+            return ouputValue;
+        }
        
     }
 }

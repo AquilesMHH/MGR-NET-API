@@ -308,5 +308,15 @@ namespace MGR_Business.com.pe.mgr.service.impl
         {
             return _medidaDaoImpl.guardarRetenerMedidaDao(metodo, idSession, medidaRq);
         }
+
+        public string revisarImplementarMedidaDao(string metodo, int idSession, MedidaRevImpRq medidaRq)
+        {
+            return _medidaDaoImpl.revisarImplementarMedidaDao(metodo, idSession, medidaRq);
+        }
+
+        public string devolverMedidaDao(int id_medida, int version_medida, int estado, string comentarios, int idSession)
+        {
+            return _medidaDaoImpl.devolverMedidaDao(id_medida, version_medida, estado, comentarios, idSession);
+        }
     }
 }

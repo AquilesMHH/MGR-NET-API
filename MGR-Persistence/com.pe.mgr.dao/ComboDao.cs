@@ -10,11 +10,11 @@ namespace MGR_Persistence.com.pe.mgr.dao
   
     public interface ComboDao : IDisposable
     {
-        List<ComboBoxDto> listarCompendioDetalleCatalogoComboReferencia(int id_compendio) ;
+        List<ComboBoxDto> ListarCompendioDetalleCatalogoComboReferencia(int id_compendio) ;
         List<ComboBoxDto> listarCompendioDetalleCatalogoCombo(int id_compendio);
         List<ComboBoxDto> listarCategoriaVocabularioNegocioCombo(int sujeto_riesgo);
         List<ComboBoxDto> listarCategoriaParametrosCombo(int sujeto_riesgo);
-        
+        List<ComboBoxDto> listarFiltroCombo(int sujeto_riesgo);
 
     }
 }

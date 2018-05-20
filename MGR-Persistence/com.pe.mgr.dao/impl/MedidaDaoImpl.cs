@@ -11,15 +11,18 @@ using System.Data;
 using MGR_Common.com.pe.mgr.common.util;
 using MGR_Common.com.pe.mgr.common.constants;
 using MGR_Persistence.com.pe.mgr.dao.SqlString;
+using System.Collections;
 
 namespace MGR_Persistence.com.pe.mgr.dao.impl
 {
     public class MedidaDaoImpl : MedidaDao, IDisposable
     {
         private ModelMGRContext context;
+        private OperacionesMedidasDaoImpl adoOperacionesMed;
         public string conn = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString;
         public MedidaDaoImpl()
         {
+            adoOperacionesMed = new OperacionesMedidasDaoImpl();
             context = new ModelMGRContext();
         }
 
@@ -703,6 +706,246 @@ namespace MGR_Persistence.com.pe.mgr.dao.impl
                 }
             }
                 return null;
+        }
+
+        public List<MedidaConsultaDto> getPorParametros(Hashtable mapValues)
+        {
+            //Hashtable mapValues = new Hashtable();
+            //mapValues.Add("", "asdf");
+
+            Dictionary<string, string> parans = new Dictionary<string, string>();
+            StringBuilder sbSelect = new StringBuilder();
+            StringBuilder sbFrom = new StringBuilder();
+            StringBuilder sbWhere = new StringBuilder();
+            StringBuilder sbOrder = new StringBuilder();
+
+            String query = "";
+
+            String[] arrayEstado = new String[0];
+
+            int cantidadParametros = 0;
+
+            sbSelect.Append("SELECT DISTINCT MEDIDAS.ID_MEDIDA ID_MEDIDA, MEDIDAS.VERSION_MEDIDA VERSION, MEDIDAS.TIPO_MEDIDA COD_TIPO_MEDIDA,\n");
+            sbSelect.Append("COALESCE((SELECT NOMBRE FROM GRTA_COMPENDIO_DETALLE WHERE ID_DETALLE=MEDIDAS.TIPO_MEDIDA), 'Indefinido') TIPO_MEDIDA,\n");
+            sbSelect.Append("MEDIDAS.NOMBRE_MEDIDA NOMBRE_MEDIDA, TO_CHAR(MEDIDAS.FECHA_INICIO_VIGENCIA, 'DD/MM/YYYY HH24:MI') || ' - ' || COALESCE(TO_CHAR(MEDIDAS.FECHA_FIN_VIGENCIA,'DD/MM/YYYY HH24:MI'), 'Indefinido') Periodo,\n");
+            sbSelect.Append("MEDIDAS.SUJETO_RIESGO COD_SUJETO_RIESGO, (SELECT UPPER(DESCRIPCION_BREVE) FROM GRTA_SUJETO_RIESGO WHERE SUJETO_RIESGO=MEDIDAS.SUJETO_RIESGO) SUJETO_RIESGO,\n");
+            sbSelect.Append("MEDIDAS.ESTADO_MEDIDA COD_ESTADO_MEDIDA, COALESCE((SELECT NOMBRE FROM GRTA_COMPENDIO_DETALLE WHERE ID_DETALLE=MEDIDAS.ESTADO_MEDIDA), 'Indefinido') ESTADO_MEDIDA,\n");
+            sbSelect.Append("(SELECT COUNT(0) FROM GRTA_CONDICION_MEDIDAS WHERE ID_MEDIDA=MEDIDAS.ID_MEDIDA AND VERSION_MEDIDA=MEDIDAS.VERSION_MEDIDA) CANTIDAD_CONDICIONES\n");
+            sbFrom.Append("FROM GRTA_MEDIDAS MEDIDAS\n");
+            sbWhere.Append("WHERE 1=1\n");
+
+            
+            foreach (DictionaryEntry entry in mapValues)
+            {
+                //Console.WriteLine("{0}, {1}", entry.Key, entry.Value);
+                if ((entry.Key.Equals("tipo_medida")) && (!entry.Value.IsNullOrEmpty())) {
+                    sbWhere.Append("AND MEDIDAS.TIPO_MEDIDA= " + entry.Value.ToString().Trim());
+                }
+                if ((entry.Key.Equals("id_medida")) && (!entry.Value.IsNullOrEmpty()))
+                {
+                    sbWhere.Append("AND MEDIDAS.ID_MEDIDA= " + entry.Value.ToString().Trim());
+                }
+                if ((entry.Key.Equals("version_medida")) && (!entry.Value.IsNullOrEmpty()))
+                {
+                    sbWhere.Append("AND MEDIDAS.VERSION_MEDIDA= " + entry.Value.ToString().Trim());
+                }
+                if ((entry.Key.Equals("estado_medida")) && (!entry.Value.IsNullOrEmpty()))
+                {
+                   // arrayEstado = param.get("estado_medida").toString().split(",");
+                  //  String strParam = String.Join(",", Collections.nCopies(arrayEstado.Length, "?"));
+                  //  sbWhere.Append("AND MEDIDAS.ESTADO_MEDIDA IN (").Append(strParam).Append(")\n");
+                }
+                if ((entry.Key.Equals("sujeto_riesgo")) && (!entry.Value.IsNullOrEmpty()))
+                {
+                    sbWhere.Append("AND MEDIDAS.SUJETO_RIESGO = " + entry.Value.ToString().Trim());
+                }
+                if ((entry.Key.Equals("politica")) && (!entry.Value.IsNullOrEmpty()))
+                {
+                    sbWhere.Append("AND MEDIDAS.ID_POLITICA = " + entry.Value.ToString().Trim());
+                }
+                if ((entry.Key.Equals("descripcion")) && (!entry.Value.IsNullOrEmpty()))
+                {
+                    sbWhere.Append("AND (MEDIDAS.NOMBRE_MEDIDA LIKE '%'||UPPER('"+ entry.Value.ToString().Trim() + "')||'%' OR MEDIDAS.DESCRIPCION LIKE '%'||UPPER('" + entry.Value.ToString().Trim() + "')||'%')\n");
+                }
+                if ((entry.Key.Equals("fecha_inicio_vigencia")) && (!entry.Value.IsNullOrEmpty()))
+                {
+                    sbWhere.Append("AND MEDIDAS.ESTADO_MEDIDA=42\n");
+                    sbWhere.Append("AND (MEDIDAS.FECHA_FIN_VIGENCIA IS NULL OR TO_DATE(TO_CHAR(MEDIDAS.FECHA_FIN_VIGENCIA,'DD/MM/YYYY')) >= " + "'" + entry.Value.ToString().Trim() + "'");
+                    sbWhere.Append("AND TO_DATE(TO_CHAR(MEDIDAS.FECHA_INICIO_VIGENCIA,'DD/MM/YYYY')) <='" + entry.Value.ToString().Trim() + "')");
+                }
+                if ((entry.Key.Equals("vigente")) && (entry.Value.Equals("1")))
+                {
+                    sbWhere.Append("AND SYSDATE BETWEEN MEDIDAS.FECHA_INICIO_VIGENCIA AND COALESCE(MEDIDAS.FECHA_FIN_VIGENCIA, SYSDATE)\n");
+                    sbWhere.Append("AND MEDIDAS.ESTADO_MEDIDA=42\n");
+                }
+                else {
+                    sbWhere.Append("AND MEDIDAS.ESTADO_MEDIDA=42 AND MEDIDAS.FECHA_FIN_VIGENCIA IS NOT NULL\n");
+                    sbWhere.Append("AND SYSDATE > COALESCE(MEDIDAS.FECHA_FIN_VIGENCIA, SYSDATE)\n");
+                }
+                if ((entry.Key.Equals("variable")) && (!entry.Value.IsNullOrEmpty()))
+                {
+                    sbFrom.Append(", GRTA_FILTROS_MEDIDAS FILTROS_MEDIDAS, GRTA_FILTROS FILTROS\n");
+                    sbWhere.Append("AND FILTROS_MEDIDAS.ID_MEDIDA=MEDIDAS.ID_MEDIDA\n");
+                    sbWhere.Append("AND FILTROS_MEDIDAS.VERSION_MEDIDA=MEDIDAS.VERSION_MEDIDA\n");
+                    sbWhere.Append("AND FILTROS.ID_FILTROS=FILTROS_MEDIDAS.ID_FILTROS\n");
+                    sbWhere.Append("AND FILTROS.EXPRESION_FILTRO LIKE '%'||'" + entry.Value.ToString().Trim() + "'||'%'\n");
+                    if ((entry.Key.Equals("valor_variable")) && (!entry.Value.IsNullOrEmpty()))
+                    {
+                        sbWhere.Append("AND FILTROS.EXPRESION_FILTRO LIKE '%'||'" + entry.Value.ToString().Trim() + "'||'%'\n");
+                    }
+                }
+                sbOrder.Append("ORDER BY MEDIDAS.ID_MEDIDA DESC, MEDIDAS.VERSION_MEDIDA DESC\n");
+               //query = sbSelect.ToString().Concat(sbFrom.ToString()).Concat(sbWhere.ToString()).Concat(sbOrder.ToString());
+                query = sbSelect.ToString() + " " + sbFrom.ToString() + " " + sbWhere.ToString() + " " + sbOrder.ToString();
+
+               
+            }
+            List<MedidaConsultaDto> objLista = null;
+            DataSet dataSet = MGR_Common.OracleHelper.Query(conn, query, System.Data.CommandType.Text, null);
+            if (dataSet != null)
+            {
+                objLista = dataSet.Tables[0].DataTableToList<MedidaConsultaDto>();
+                return objLista;
+            }
+            return null;
+        }
+
+        public string revisarImplementarMedidaDao(string metodo, int idSession, MedidaRevImpRq medidaRevImpRq)
+        {
+            bool revisar = false;
+            int tipoOperacion =0;
+            StringBuilder sbRespuesta = new StringBuilder();
+            
+            if (metodo.Equals("revisar")){
+                revisar = true;
+                tipoOperacion = (int) EnumTipoOperacion.REVISION;
+                if (medidaRevImpRq.CONFORME)
+                {
+                    sbRespuesta.Append("La regla ha sido Revisada Conforme");
+                    medidaRevImpRq.ESTADO =40; // Revision Conforme
+                }
+                else
+                {
+                    sbRespuesta.Append("La regla ha sido Revisada No Conforme");
+                    medidaRevImpRq.ESTADO=41; // Revision No Conforme
+                }
+            }
+            else if (metodo.Equals("implementar"))
+            {
+                revisar = false;
+                tipoOperacion = (int) EnumTipoOperacion.APROBACION;
+                if (medidaRevImpRq.CONFORME)
+                {
+                    sbRespuesta.Append("La regla ha sido Aprobada");
+                    medidaRevImpRq.ESTADO =42; // Aprobada
+                }
+                else
+                {
+                    sbRespuesta.Append("La regla ha sido Rechazada");
+                    medidaRevImpRq.ESTADO =43; // Rechazada
+                }
+            }
+            medidaRevImpRq.IDSESSION =idSession;
+
+            if (medidaRevImpRq.FECHAINICIOVIGENCIA.IsNullOrEmpty())
+            {
+                DateTime fechaInicioVigencia = DateTime.Parse(medidaRevImpRq.FECHAINICIOVIGENCIA);
+                DateTime fechaActual = DateTime.Now;
+
+                if (fechaInicioVigencia.CompareTo(fechaActual) == 0)
+                {
+                    fechaInicioVigencia = DateTime.Now;
+                }
+
+                medidaRevImpRq.FECHAINICIOVIGENCIA = fechaInicioVigencia.ToString();
+            }
+
+            medidaRevImpRq.DATFECHAFINVIGENCIA = DateTime.Parse(medidaRevImpRq.FECHAFINVIGENCIA);
+            string sql = "";
+            if (revisar)
+            {
+                sql = "UPDATE GRTA_MEDIDAS SET " +
+                          "ESTADO_MEDIDA = " + medidaRevImpRq.ESTADO + "," +
+                          "FECHA_REGISTRO = SYSDATE," +
+                          "SESSION_REGISTRO = " + idSession + " " +
+                          "WHERE ID_MEDIDA =  " + medidaRevImpRq.ID_MEDIDA + " " +
+                          "AND VERSION_MEDIDA = " + medidaRevImpRq.VERSION_MEDIDA + "";
+            }
+            else
+            {
+                sql = "UPDATE GRTA_MEDIDAS SET " +
+                           "ESTADO_MEDIDA = " + medidaRevImpRq.ESTADO + "," +
+                          "FECHA_REGISTRO = SYSDATE," +
+                          "FECHA_INICIO_VIGENCIA = " + medidaRevImpRq.DATFECHAINICIOVIGENCIA.ToString() + "," +
+                          "FECHA_FIN_VIGENCIA = " + medidaRevImpRq.DATFECHAFINVIGENCIA.ToString() + "," +
+                          "SESSION_REGISTRO = " + idSession + " " +
+                          "WHERE ID_MEDIDA =  " + medidaRevImpRq.ID_MEDIDA + " " +
+                          "AND VERSION_MEDIDA = " + medidaRevImpRq.VERSION_MEDIDA + "";
+            }
+            String sqlOpe = "";
+            OperacionesMedidas objOperaMedida = new OperacionesMedidas();
+            objOperaMedida.ID_MEDIDA = medidaRevImpRq.ID_MEDIDA;
+            objOperaMedida.VERSION_MEDIDA = medidaRevImpRq.VERSION_MEDIDA;
+            objOperaMedida.SESSION_OPERACION = idSession;
+            objOperaMedida.TIPO_OPERACION = tipoOperacion;
+            objOperaMedida.COMENTARIO = medidaRevImpRq.COMENTARIOS;
+            objOperaMedida.FECHA_OPERACION = DateTime.Now;
+            adoOperacionesMed.saveOrUpdate(objOperaMedida, true);
+            return sbRespuesta.ToString();
+        }
+        public int updateEstado(int id_medida, int version_medida, int estado, int idSession)
+        {
+          string  sql = "UPDATE GRTA_MEDIDAS SET " +
+                           "ESTADO_MEDIDA = " + estado + "," +
+                           "FECHA_REGISTRO = SYSDATE," +
+                           "SESSION_REGISTRO = " + idSession + " " +
+                           "WHERE ID_MEDIDA =  " + id_medida + " " +
+                           "AND VERSION_MEDIDA = " + version_medida + "";
+            int cantidad = 0;
+            using (var dbContextTransaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    cantidad = MGR_Common.OracleHelper.ExecuteNonQuery(conn, System.Data.CommandType.Text, sql, null);
+                }
+                catch (Exception ext)
+                {
+                    string valor = ext.ToString();
+                    dbContextTransaction.Rollback();
+                }
+
+            }
+            return cantidad;
+	}
+    public string devolverMedidaDao(int id_medida, int version_medida, int estado, string comentarios, int idSession)
+        {
+
+            int nuevoEstado = 0;
+
+            if (estado == 39)
+            {// Estado Creada
+                nuevoEstado = 44;
+            }
+            else if (estado == 40)
+            {// Estado Rev. Conforme
+                nuevoEstado = 39;
+            }
+
+            if (nuevoEstado == 0)
+            {
+                throw new MgrServiceException(ErrorCodeConstant.ESQ_00000, "Estado de medida para devolver no definido");
+            }
+             updateEstado(id_medida, version_medida, nuevoEstado, idSession);
+            OperacionesMedidas objOperaMedida = new OperacionesMedidas();
+            objOperaMedida.ID_MEDIDA = id_medida;
+            objOperaMedida.VERSION_MEDIDA = version_medida;
+            objOperaMedida.SESSION_OPERACION = idSession;
+            objOperaMedida.TIPO_OPERACION = estado;
+            objOperaMedida.COMENTARIO = comentarios;
+            objOperaMedida.FECHA_OPERACION = DateTime.Now;
+            adoOperacionesMed.saveOrUpdate(objOperaMedida, true);
+            return "La regla ha sido devuelta";
+          
         }
     }
 }
