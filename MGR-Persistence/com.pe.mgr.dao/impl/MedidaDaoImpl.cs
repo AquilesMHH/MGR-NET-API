@@ -947,5 +947,74 @@ namespace MGR_Persistence.com.pe.mgr.dao.impl
             return "La regla ha sido devuelta";
           
         }
+
+        public string modificarMedidadaDao(int idSession, MedidaRq medidaRq)
+        {
+            int estado = 0;
+            EnumTipoOperacion tipoOperacion = EnumTipoOperacion.MODIFICACION;
+            String respuesta = "La regla ha sido modificada exitosamente. Su identificación es: %s";
+            GRTA_MEDIDAS medida = new GRTA_MEDIDAS();
+            medida.ID_MEDIDA = medidaRq.ID_MEDIDA;
+            medida.VERSION_MEDIDA = (byte) medidaRq.VERSION_MEDIDA;
+            medida.SUJETO_RIESGO = (byte) medidaRq.SUJETORIESGO;
+            medida.TIPO_MEDIDA = medidaRq.TIPOMEDIDA;
+            medida.CLASE_MEDIDA = medidaRq.CLASEMEDIDA;
+            medida.ESTADO_MEDIDA = medidaRq.ESTADO;
+            medida.ID_POLITICA = (short) medidaRq.POLITICA;
+            medida.JERARQUIA_MEDIDA = medidaRq.JERARQUIA;
+            medida.NOMBRE_MEDIDA = medidaRq.NOMBRE;
+            medida.DESCRIPCION = medidaRq.DESCRIPCION;
+            medida.FECHA_INICIO_VIGENCIA = DateTime.Parse(medidaRq.FECHAVIGENCIAINI);
+            medida.FECHA_FIN_VIGENCIA = DateTime.Parse(medidaRq.FECHAVIGENCIAFIN);
+            medida.FECHA_INICIO_ANALISIS = DateTime.Parse(medidaRq.FECHAANALISISINI);
+            medida.FECHA_FIN_ANALISIS = DateTime.Parse(medidaRq.FECHAANALISISFIN);
+            medida.VALOR_FRECUENCIA = (byte) medidaRq.FRECUENCIA;
+            medida.TIPO_FRECUENCIA = medidaRq.TIPOFRECUENCIA;
+            medida.RITMO_APRENDIZAJE = (byte) medidaRq.RITMOAPRENDIZAJE;
+            if (medidaRq.TERMINOMOMENTO.IsNullOrEmpty()) {
+                medida.TERMINO_MOMENTO = Decimal.Parse(medidaRq.TERMINOMOMENTO);
+            }
+            medida.MEDIDA_PRECEDENTE = medidaRq.MEDIDAPRECEDENTEIDMEDIDA;
+            medida.VERSION_PRECEDENTE = (byte) medidaRq.MEDIDAPRECEDENTEVERSION;
+            medida.FECHA_REGISTRO = DateTime.Now;
+            medida.SESSION_REGISTRO = idSession;
+            medida.FUNCION_ACTIVACION = medidaRq.FUNCIONACTIVACION;
+            medida.FLAG_REPLICACION = false;
+            using (var dbContextTransaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                   
+                    context.GRTA_MEDIDAS.Add(medida);
+                    context.SaveChanges();
+                    dbContextTransaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    dbContextTransaction.Rollback();
+                    Console.WriteLine("Error occurred.");
+                }
+            }
+            foreach (CondicionMedidaRq condicionMedidaRq in medidaRq.lstCondicionMedidaRq)
+            {
+                if (condicionMedidaRq.compCondicionMedidaSiRq != null) {
+                    ComponenteCondicionMedidaRq componenteCondicionMedidaRq = condicionMedidaRq.compCondicionMedidaSiRq;
+                }
+
+                if (condicionMedidaRq.compCondicionMedidaSiRq != null)
+                { 
+                    
+                }
+                else
+                {
+                    throw new MgrServiceException(ErrorCodeConstant.ESQ_00000, "Condición sin tipo de Salida SI");
+                }
+
+            }
+           
+
+
+                throw new NotImplementedException();
+        }
     }
 }
