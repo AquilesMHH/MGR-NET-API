@@ -9,9 +9,17 @@ namespace MGR_Persistence.com.pe.mgr.dao.SqlString
 {
     public static class MgrEnumConsultaGeneral
     {
-        //MV Se creó un query para todas los combos que tengan q pintarse a partir del compendio
-        //usado en Consultar Perfil Riesgo Casos en el combo medida
 
+        public static String MgrVariableCatalogo()
+        {
+            return @"SELECT CODIGO_VARIABLE codigo, DESCRIPCION_BREVE descripcion FROM GRTA_VARIABLES\n" +
+                    " WHERE TIPO_VARIABLE=116 AND SYSDATE BETWEEN FECHA_INICIO_VIGENCIA AND DECODE(FECHA_FIN_VIGENCIA,'',SYSDATE,FECHA_FIN_VIGENCIA)";
+        }
+        public static String MgrSujetoRiesgoCombo()
+        {
+            return @"SELECT SUJETO_RIESGO codigo, DESCRIPCION_BREVE descripcion FROM GRTA_SUJETO_RIESGO\n" +
+                        " WHERE SYSDATE BETWEEN FECHA_INICIO_VIGENCIA AND DECODE(FECHA_FIN_VIGENCIA, '', SYSDATE) ORDER BY SUJETO_RIESGO ASC";
+        }
         public static String MgrVerificaUsuario(GRTA_USUARIO obj) {
             return @"SELECT DISTINCT USUARIO.ID_USUARIO "
                + "FROM GRTA_USUARIO USUARIO LEFT JOIN GRTA_USUARIO_ROL USUARIO_ROL ON USUARIO.ID_USUARIO = USUARIO_ROL.ID_USUARIO AND USUARIO_ROL.ESTADO = 1 "
@@ -176,6 +184,20 @@ namespace MGR_Persistence.com.pe.mgr.dao.SqlString
                     "FROM GRTA_FUNCION FUNCION \n" +
                     "WHERE FUNCION.GRUPO_FUNCION = " + grupo_funcion + "";
         }
+        public static String MgrVariaciones(string nombreTabla, string claveRegistro)
+        {
+            return @"SELECT TO_CHAR(VARIACIONES.FECHA_INGRESO,'DD/MM/YYYY HH24:MI') \'fecha_ingreso\', \n" +
+            "SESSIONES.CODIGO_USUARIO||'-'||(SELECT DESCRIPCION FROM GRTA_COMPENDIO_DETALLE WHERE ID_COMPENDIO=63 AND UPPER(CODIGO_ALTERNO)=UPPER(SESSIONES.CODIGO_USUARIO)) \"nombre_usuario\", \n" +
+            "VARIACIONES.NOMBRE_CAMPO \'nombre_campo\', DECODE(VARIACIONES.VALOR_ANTIGUO,' ','EN BLANCO',NULL,'EN BLANCO',SUBSTR(VARIACIONES.VALOR_ANTIGUO,1,15)) \"valor_antiguo\", SUBSTR(VARIACIONES.VALOR_NUEVO,1,15) \"valor_nuevo\" \n" +
+            "FROM GRTA_VARIACIONES VARIACIONES, GRTA_SESSION SESSIONES\n" +
+            "WHERE\n" +
+            "VARIACIONES.NOMBRE_TABLA='"+ nombreTabla  + "' AND\n" +
+            "VARIACIONES.CLAVE_REGISTRO='" + claveRegistro + "' AND\n" +
+            "SESSIONES.ID_SESSION=VARIACIONES.ID_SESSION\n" +
+            "ORDER BY VARIACIONES.FECHA_INGRESO DESC";
+        }
+    
+
         public static String MgrTipoValorParametroConCategoria(int categoria, int sujeto_riesgo)
         {
             return @"SELECT PARAMETROS.CLASE_PARAMETRO codigo_categoria, COMPENDIO.NOMBRE descripcion_categoria, \n"
@@ -207,6 +229,10 @@ namespace MGR_Persistence.com.pe.mgr.dao.SqlString
             return @"SELECT ID_DETALLE, NOMBRE FROM GRTA_COMPENDIO_DETALLE " +
                         " WHERE ID_COMPENDIO=2 AND SUJETO_RIESGO = TO_NUMBER(:id_sujeto_riesgo) AND SYSDATE BETWEEN FECHA_INICIO_VIGENCIA AND DECODE(FECHA_FIN_VIGENCIA,'',SYSDATE) " +
                         " ORDER BY REFERENCIA1";
+        }
+        public static String obtenerCompendioGeneral(int id_compendio)
+        {
+            return @"select * from grta_compendio_general where  id_compendio =" + id_compendio + ""; 
         }
         public static String MgrFuenteDatos1821767ConCategoriaCombo(int id_sujeto_riesgo)
         {

@@ -1,4 +1,5 @@
 ﻿using MGR_Business.com.pe.mgr.service.impl;
+using MGR_Common.com.pe.mgr.common.util;
 using MGR_Entidades.Entidad;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,19 @@ namespace MGR_WebApi.Controllers
         {
             return _compendioGeneralServiceImpl.listarClaseMedidas(id_sujeto_riesgo);
         }
+        [Route("tipoTabla", Name = "compendio tipoTabla")]
+        [HttpGet]
+        public List<Row> getListarTipoTabla()
+        {
+            return _compendioGeneralServiceImpl.getListarTipoTabla();
+        }
 
+        [Route("id_compendio", Name = "compendio id_compendio")]
+        [HttpGet]
+        public List<Row> listarTipoModificacion()
+        {
+            return _compendioGeneralServiceImpl.getListarTipoModificacion();
+        }
+          
     }
 }

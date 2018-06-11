@@ -52,8 +52,27 @@ namespace MGR_WebApi.Controllers
             return _comboServiceImpl.listarFiltroCombo(sujeto_riesgo);
         }
 
-           
+        [Route("sujetoriesgo", Name = "Common sujetoriesgo ")]
+        [HttpGet]
+        public List<ComboBoxDto> listarSujetoRiesgoCombo()
+        {
+            return _comboServiceImpl.listarSujetoRiesgoCombo();
+        }
 
+        [Route("valoresvigentescompendiodetalle", Name = "Common valoresvigentescompendiodetalle ")]
+        [HttpGet]
+        public List<ComboBoxDto> listarValoresVigentesCompendioDetalleCombo()
+        {
+            return _comboServiceImpl.listarValoresVigentesCompendioCombo();
+        }
+        [Route("variablecatalogo", Name = "Common variablecatalogo ")]
+        [HttpGet]
+        public List<ComboBoxDto> listarVariableCatalogoCombo()
+        {
+            return _comboServiceImpl.listarVariableCatalogoCombo();
+        }
+         
+        }
 
     }
 }

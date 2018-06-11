@@ -88,5 +88,28 @@ namespace MGR_Persistence.com.pe.mgr.dao.impl
         {
             throw new NotImplementedException();
         }
+
+        public CompendioGeneral get(int id_compendio)
+        {
+            using (var dbContextTransaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    List<CompendioGeneral> objLista = new List<CompendioGeneral>();
+                    DataSet dataSet = MGR_Common.OracleHelper.Query(conn, MgrEnumConsultaGeneral.obtenerCompendioGeneral(id_compendio), System.Data.CommandType.Text, null);
+                    if (dataSet != null)
+                    {
+                        objLista = dataSet.Tables[0].DataTableToList<CompendioGeneral>();
+                        return objLista[0];
+                    }
+                }
+                catch (Exception ext)
+                {
+                    string valor = ext.ToString();
+                    dbContextTransaction.Rollback();
+                }
+                return null;
+            }
+        }
     }
 }

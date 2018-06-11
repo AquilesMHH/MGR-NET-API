@@ -173,5 +173,77 @@ namespace MGR_Persistence.com.pe.mgr.dao.impl
                 return null;
             }
         }
+
+        public List<ComboBoxDto> listarSujetoRiesgoCombo()
+        {
+            using (var dbContextTransaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    List<ComboBoxDto> objLista = new List<ComboBoxDto>();
+                    DataSet dataSet = MGR_Common.OracleHelper.Query(conn, MgrEnumConsultaGeneral.MgrSujetoRiesgoCombo(), System.Data.CommandType.Text, null);
+                    if (dataSet != null)
+                    {
+                        objLista = dataSet.Tables[0].DataTableToList<ComboBoxDto>();
+                        return objLista;
+                    }
+                }
+                catch (Exception ext)
+                {
+
+                    string valor = ext.ToString();
+                    dbContextTransaction.Rollback();
+                }
+                return null;
+            }
+        }
+
+        public List<ComboBoxDto> listarValoresVigentesCompendioCombo()
+        {
+            using (var dbContextTransaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    List<ComboBoxDto> objLista = new List<ComboBoxDto>();
+                    DataSet dataSet = MGR_Common.OracleHelper.Query(conn, MgrEnumConsultaGeneral.MgrSujetoRiesgoCombo(), System.Data.CommandType.Text, null);
+                    if (dataSet != null)
+                    {
+                        objLista = dataSet.Tables[0].DataTableToList<ComboBoxDto>();
+                        return objLista;
+                    }
+                }
+                catch (Exception ext)
+                {
+
+                    string valor = ext.ToString();
+                    dbContextTransaction.Rollback();
+                }
+                return null;
+            }
+        }
+
+        public List<ComboBoxDto> listarVariableCatalogoCombo()
+        {
+            using (var dbContextTransaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    List<ComboBoxDto> objLista = new List<ComboBoxDto>();
+                    DataSet dataSet = MGR_Common.OracleHelper.Query(conn, MgrEnumConsultaGeneral.MgrVariableCatalogo(), System.Data.CommandType.Text, null);
+                    if (dataSet != null)
+                    {
+                        objLista = dataSet.Tables[0].DataTableToList<ComboBoxDto>();
+                        return objLista;
+                    }
+                }
+                catch (Exception ext)
+                {
+
+                    string valor = ext.ToString();
+                    dbContextTransaction.Rollback();
+                }
+                return null;
+            }
+        }
     }
 }

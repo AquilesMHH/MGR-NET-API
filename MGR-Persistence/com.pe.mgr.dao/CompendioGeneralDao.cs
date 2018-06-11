@@ -17,6 +17,6 @@ namespace MGR_Persistence.com.pe.mgr.dao
         List<CompendioDetalleDto> listarClaseMedidas(int id_sujeto_riesgo);
         List<CompendioGeneralBean> listarCompendioDetalles(int id_compendio);
         List<CompendioGeneralBean> listarTipoTabla(int id_sujeto_riesgo);
-   
+        CompendioGeneral get(int id_compendio);
     }
 }

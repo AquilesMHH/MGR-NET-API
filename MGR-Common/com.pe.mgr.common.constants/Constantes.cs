@@ -8,6 +8,10 @@ namespace MGR_Common.com.pe.mgr.common.constants
 {
     public class Constantes
     {
+        public static String GRTA_COMPENDIO_GENERAL = "GRTA_COMPENDIO_GENERAL";
+        public static String GRTA_COMPENDIO_DETALLE = "GRTA_COMPENDIO_DETALLE";
+        public static String GRTA_COMPENDIO_SUBDETALLE = "GRTA_COMPENDIO_SUBDETALLE";
+        public static String GRTA_VARIABLE = "GRTA_VARIABLES";
         public static int TIPO_MEDIDA_MODELO_PROBABILISTICO = 18;
         public static int TIPO_MEDIDA_RED_NEURONAL = 21767;
         public static int TIPO_MEDIDA_CRITERIO_EXPERTO = 17;
